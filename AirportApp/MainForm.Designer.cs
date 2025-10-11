@@ -28,12 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "MainForm";
+            dataGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGrid
+            // 
+            dataGrid.AllowUserToAddRows = false;
+            dataGrid.AllowUserToDeleteRows = false;
+            dataGrid.AllowUserToResizeColumns = false;
+            dataGrid.AllowUserToResizeRows = false;
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGrid.Cursor = Cursors.Hand;
+            dataGrid.Dock = DockStyle.Fill;
+            dataGrid.Location = new Point(0, 0);
+            dataGrid.Name = "dataGrid";
+            dataGrid.ReadOnly = true;
+            dataGrid.RowHeadersWidth = 62;
+            dataGrid.ShowEditingIcon = false;
+            dataGrid.Size = new Size(800, 450);
+            dataGrid.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dataGrid);
+            Name = "MainForm";
+            Text = "Аэропорт";
+            ((System.ComponentModel.ISupportInitialize)dataGrid).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGrid;
     }
 }
