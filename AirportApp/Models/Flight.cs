@@ -3,7 +3,7 @@
     /// <summary>
     /// Данные о рейсе
     /// </summary>
-    internal class FlightModel
+    internal class Flight
     {
         /// <summary>
         /// Идентификатор рейса
@@ -13,7 +13,7 @@
         /// <summary>
         /// Номер рейса
         /// </summary>
-        public string FlightNumber { get; set; } = string.Empty;
+        public int FlightNumber { get; set; }
 
         /// <inheritdoc cref="Models.TypeOFAircraft" />
         public TypeOFAircraft TypeOFAircraft { get; set; }
@@ -31,7 +31,7 @@
         /// <summary>
         /// Сбор на пассажира
         /// </summary>
-        public int PassengerFee { get; set; }
+        public decimal PassengerFee { get; set; }
 
         /// <summary>
         /// Количество экипажа
@@ -41,16 +41,16 @@
         /// <summary>
         /// Сбор на экипаж
         /// </summary>
-        public double CrewFee { get; set; }
+        public decimal CrewFee { get; set; }
 
         /// <summary>
         /// Процент надбавки за обслуживание
         /// </summary>
-        public double ServicePercentage { get; set; }
+        public decimal ServicePercentage { get; set; }
 
         /// <summary>
         /// Выручка
         /// </summary>
-        public double Revenue => (NumberOFPassengers * PassengerFee + CrewNumber * CrewFee) * (1 + ServicePercentage / 100);
+        public decimal Revenue => (NumberOFPassengers * PassengerFee + CrewNumber * CrewFee) * (1 + ServicePercentage / 100);
     }
 }

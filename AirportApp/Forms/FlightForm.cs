@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AirportApp.Forms
 {
-    public partial class EditForm : Form
+    public partial class FlightForm : Form
     {
-        public EditForm()
+        public FlightForm()
         {
             InitializeComponent();
         }

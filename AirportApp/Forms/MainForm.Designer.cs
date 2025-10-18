@@ -235,6 +235,7 @@
             Controls.Add(StatusStrip);
             Controls.Add(ToolStrip);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Аэропорт";
             Load += MainForm_Load;
             ToolStrip.ResumeLayout(false);

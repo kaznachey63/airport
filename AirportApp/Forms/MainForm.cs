@@ -6,23 +6,23 @@ namespace AirportApp
     public partial class MainForm : Form
     {
         private readonly Core core = new();
-        private readonly List<FlightModel> flights;
+        private readonly List<Flight> flights;
         private readonly BindingSource bindingSource = new();
 
         public MainForm()
         {
             flights = [];
-            flights.Add(new FlightModel
+            flights.Add(new Flight
             {
                 Id = Guid.NewGuid(),
-                FlightNumber = "A504",
+                FlightNumber = 504,
                 TypeOFAircraft = TypeOFAircraft.Boieng,
                 ArrivalTime = DateTime.Now,
                 NumberOFPassengers = 100,
-                PassengerFee = 12000,
+                PassengerFee = 12000m,
                 CrewNumber = 5,
-                CrewFee = 2000,
-                ServicePercentage = 5
+                CrewFee = 2000m,
+                ServicePercentage = 5m
             });
 
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace AirportApp
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            using var addForm = new AddForm();
+            using var addForm = new FlightForm();
             if (addForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -47,7 +47,7 @@ namespace AirportApp
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            using var editForm = new AddForm();
+            using var editForm = new FlightForm();
             if (editForm.ShowDialog() == DialogResult.OK)
             {
 
