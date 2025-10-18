@@ -1,5 +1,8 @@
 ﻿namespace AirportApp
 {
+    /// <summary>
+    /// Данные о рейсе
+    /// </summary>
     internal class FlightData
     {
         public FlightData()

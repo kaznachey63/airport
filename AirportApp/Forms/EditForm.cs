@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AirportApp
+namespace AirportApp.Forms
 {
-    public partial class MainForm : Form
+    public partial class EditForm : Form
     {
-        public MainForm()
+        public EditForm()
         {
             InitializeComponent();
         }
