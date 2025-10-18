@@ -16,5 +16,10 @@ namespace AirportApp.Forms
         {
             InitializeComponent();
         }
+
+        private void FlightForm_Load(object sender, EventArgs e)
+        {
+            ComboBox.DataSource = Enum.GetValues(typeof(TypeOFAircraft));
+        }
     }
 }

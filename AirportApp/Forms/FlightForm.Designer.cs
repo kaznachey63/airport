@@ -210,6 +210,7 @@
             Name = "FlightForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Параметры рейса";
+            Load += FlightForm_Load;
             ((System.ComponentModel.ISupportInitialize)NumericUpDownFlightNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownNumberPassengers).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewNumber).EndInit();

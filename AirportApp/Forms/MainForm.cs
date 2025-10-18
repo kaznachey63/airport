@@ -6,34 +6,17 @@ namespace AirportApp
     public partial class MainForm : Form
     {
         private readonly Core core = new();
-        private readonly List<Flight> flights;
-        private readonly BindingSource bindingSource = new();
 
         public MainForm()
-        {
-            flights = [];
-            flights.Add(new Flight
-            {
-                Id = Guid.NewGuid(),
-                FlightNumber = 504,
-                TypeOFAircraft = TypeOFAircraft.Boieng,
-                ArrivalTime = DateTime.Now,
-                NumberOFPassengers = 100,
-                PassengerFee = 12000m,
-                CrewNumber = 5,
-                CrewFee = 2000m,
-                ServicePercentage = 5m
-            });
-
+        {   
             InitializeComponent();
             Table.AutoGenerateColumns = false;
-            bindingSource!.DataSource = flights;
-            Table.DataSource = bindingSource;
+            Table.DataSource = core.LoadData();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            core.ShowDate(Table);
+            core.ShowData(Table);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
