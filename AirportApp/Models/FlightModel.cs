@@ -1,24 +1,22 @@
-﻿namespace AirportApp
+﻿namespace AirportApp.Models
 {
     /// <summary>
     /// Данные о рейсе
     /// </summary>
-    internal class FlightData
+    internal class FlightModel
     {
-        public FlightData()
-        {
-
-        }
+        /// <summary>
+        /// Идентификатор рейса
+        /// </summary>
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Номер рейса
         /// </summary>
-        public int FlightNumber { get; set; }
+        public string FlightNumber { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Тип самолета
-        /// </summary>
-        public string TypeOfAircraft { get; set; }
+        /// <inheritdoc cref="Models.TypeOFAircraft" />
+        public TypeOFAircraft TypeOFAircraft { get; set; }
 
         /// <summary>
         /// Время прибытия
@@ -28,7 +26,7 @@
         /// <summary>
         /// Количество пассажаиров
         /// </summary>
-        public int NumberOfPassengers { get; set; }
+        public int NumberOFPassengers { get; set; }
 
         /// <summary>
         /// Сбор на пассажира
@@ -43,16 +41,16 @@
         /// <summary>
         /// Сбор на экипаж
         /// </summary>
-        public int CrewFee { get; set; }
+        public double CrewFee { get; set; }
 
         /// <summary>
         /// Процент надбавки за обслуживание
         /// </summary>
-        public double ServiceSurchagePercentage { get; set; }
+        public double ServicePercentage { get; set; }
 
         /// <summary>
         /// Выручка
         /// </summary>
-        public double Revenue { get; set; }
+        public double Revenue => (NumberOFPassengers * PassengerFee + CrewNumber * CrewFee) * (1 + ServicePercentage / 100);
     }
 }
