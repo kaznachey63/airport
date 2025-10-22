@@ -6,22 +6,19 @@ namespace AirportApp
     public partial class MainForm : Form
     {
         private int selectedRowIndex = 0;
-        private readonly Core core = new();
+        private readonly Core core;
 
         public MainForm()
         {
             InitializeComponent();
+            core = new(this);
             Table.AutoGenerateColumns = false;
             Table.DataSource = core.LoadData();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            using var addForm = new FlightForm();
-            if (addForm.ShowDialog() == DialogResult.OK)
-            {
-                core.AddData(addForm.CurrentFlight);
-            }
+            core.AddButtonHandler();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -32,12 +29,7 @@ namespace AirportApp
             }
 
             var flight = (FlightModel)Table.Rows[selectedRowIndex].DataBoundItem;
-
-            using var editForm = new FlightForm(flight);
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                core.RefreshData(editForm.CurrentFlight);
-            }
+            core.EditButtonHandler(flight);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

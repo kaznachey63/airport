@@ -1,4 +1,5 @@
-﻿using AirportApp.Models;
+﻿using AirportApp.Forms;
+using AirportApp.Models;
 
 namespace AirportApp
 {
@@ -9,9 +10,10 @@ namespace AirportApp
     {
         private readonly List<FlightModel> flights = new();
         private readonly BindingSource bindingSource = new();
-
-        public Core()
+        private readonly MainForm mainForm;
+        public Core(MainForm MF)
         {
+            mainForm = MF;
         }
 
         /// <summary>
@@ -34,7 +36,49 @@ namespace AirportApp
             });
 
             bindingSource!.DataSource = flights;
+            SetStatistics();
             return bindingSource;
+        }
+
+        /// <summary>
+        /// Обработчик кнопки добавить
+        /// </summary>
+        public void AddButtonHandler()
+        {
+            using var addForm = new FlightForm();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                AddData(addForm.CurrentFlight);
+            }
+        }
+
+        /// <summary>
+        /// Обработчик кнопки изменить
+        /// </summary>
+        /// <param name="flight">Выбранный рейс</param>
+        public void EditButtonHandler(FlightModel flight)
+        {
+            using var editForm = new FlightForm(flight);
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                RefreshData(editForm.CurrentFlight);
+            }
+        }
+
+        /// <summary>
+        /// Обработчик кнопки удалить
+        /// </summary>
+        /// <param name="flight">Выбранный рейс</param>
+        public void DeleteButtonHandler(FlightModel flight)
+        {
+            var target = flights.FirstOrDefault(x => x.Id == flight.Id);
+            var rightTODelete = MessageBox.Show("Точно удалить рейс №" + target!.FlightNumber + "?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rightTODelete == DialogResult.Yes)
+            {
+                flights.Remove(target);
+                bindingSource.ResetBindings(false);
+                SetStatistics();
+            }
         }
 
         /// <summary>
@@ -56,6 +100,7 @@ namespace AirportApp
                 target.ServicePercentage = currentFlight.ServicePercentage;
 
                 bindingSource.ResetBindings(false);
+                SetStatistics();
             }
         }
 
@@ -67,21 +112,15 @@ namespace AirportApp
         {
             flights.Add(currentFlight);
             bindingSource.ResetBindings(false);
+            SetStatistics();
         }
 
-        /// <summary>
-        /// Обработчик кнопки удалить
-        /// </summary>
-        /// <param name="flight">Выбранный рейс</param>
-        public void DeleteButtonHandler(FlightModel flight)
+        private void SetStatistics()
         {
-            var target = flights.FirstOrDefault(x => x.Id == flight.Id);
-            var rightTODelete = MessageBox.Show("Точно удалить рейс №" + target!.FlightNumber + "?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rightTODelete == DialogResult.Yes)
-            {
-                flights.Remove(target);
-                bindingSource.ResetBindings(false);
-            }
+            mainForm.NumberOFFlights.Text = $"Количество рейсов: {flights.Count}";
+            mainForm.NumberOFPassengers.Text = $"Количество пассажиров: {flights.Sum(f => f.NumberOFPassengers)}";
+            mainForm.CrewNumber.Text = $"Количество экипажа: {flights.Sum(c => c.CrewNumber)}";
+            mainForm.TotalRevenue.Text = $"Общая выручка: {flights.Sum(r => r.Revenue)}";
         }
     }
 }

@@ -140,8 +140,8 @@
             // TotalRevenue
             // 
             TotalRevenue.Name = "TotalRevenue";
-            TotalRevenue.Size = new Size(184, 25);
-            TotalRevenue.Text = "Количество выручки";
+            TotalRevenue.Size = new Size(145, 25);
+            TotalRevenue.Text = "Общая выручка";
             // 
             // Table
             // 
@@ -263,11 +263,6 @@
         private ToolStripButton DeleteButton;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
-        private StatusStrip StatusStrip;
-        private ToolStripStatusLabel NumberOFFlights;
-        private ToolStripStatusLabel NumberOFPassengers;
-        private ToolStripStatusLabel CrewNumber;
-        private ToolStripStatusLabel TotalRevenue;
         private DataGridView Table;
         private DataGridViewTextBoxColumn FlightNumberColumn;
         private DataGridViewTextBoxColumn TypeOFAircraftColumn;
@@ -278,5 +273,10 @@
         private DataGridViewTextBoxColumn CrewFeeColumn;
         private DataGridViewTextBoxColumn ServicePercentageColumn;
         private DataGridViewTextBoxColumn RevenueColumn;
+        public ToolStripStatusLabel NumberOFFlights;
+        public ToolStripStatusLabel NumberOFPassengers;
+        public ToolStripStatusLabel CrewNumber;
+        public ToolStripStatusLabel TotalRevenue;
+        private StatusStrip StatusStrip;
     }
 }
