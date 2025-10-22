@@ -28,7 +28,6 @@ namespace AirportApp
         {
             if (selectedRowIndex < 0)
             {
-                MessageBox.Show("Не выбрана ячейка для редактирования");
                 return;
             }
 
@@ -43,15 +42,12 @@ namespace AirportApp
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            var rightTODelete = MessageBox.Show("Точно удалить запись ?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rightTODelete == DialogResult.Yes)
-            {
-
-            }
-            else
+            if (selectedRowIndex < 0)
             {
                 return;
             }
+            var flight = (FlightModel)Table.Rows[selectedRowIndex].DataBoundItem;
+            core.DeleteButtonHandler(flight);
         }
 
         private void Table_CellClick(object sender, DataGridViewCellEventArgs e)

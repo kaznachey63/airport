@@ -68,5 +68,20 @@ namespace AirportApp
             flights.Add(currentFlight);
             bindingSource.ResetBindings(false);
         }
+
+        /// <summary>
+        /// Обработчик кнопки удалить
+        /// </summary>
+        /// <param name="flight">Выбранный рейс</param>
+        public void DeleteButtonHandler(FlightModel flight)
+        {
+            var target = flights.FirstOrDefault(x => x.Id == flight.Id);
+            var rightTODelete = MessageBox.Show("Точно удалить рейс №" + target!.FlightNumber + "?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rightTODelete == DialogResult.Yes)
+            {
+                flights.Remove(target);
+                bindingSource.ResetBindings(false);
+            }
+        }
     }
 }
