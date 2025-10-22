@@ -3,7 +3,7 @@
     /// <summary>
     /// Данные о рейсе
     /// </summary>
-    internal class Flight
+    public class FlightModel
     {
         /// <summary>
         /// Идентификатор рейса

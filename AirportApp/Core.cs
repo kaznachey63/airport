@@ -7,12 +7,11 @@ namespace AirportApp
     /// </summary>
     internal class Core
     {
-        private readonly List<Flight> flights = new();
+        private readonly List<FlightModel> flights = new();
         private readonly BindingSource bindingSource = new();
 
         public Core()
         {
-            LoadData();
         }
 
         /// <summary>
@@ -21,7 +20,7 @@ namespace AirportApp
         public BindingSource LoadData()
         {
             flights.Clear(); // очищаем список перед новой загрузкой
-            flights.Add(new Flight
+            flights.Add(new FlightModel
             {
                 Id = Guid.NewGuid(),
                 FlightNumber = 504,
@@ -39,11 +38,35 @@ namespace AirportApp
         }
 
         /// <summary>
-        /// Отображение данных
+        /// Обновление данных
         /// </summary>
-        public void ShowData(DataGridView table)
+        /// <param name="currentFlight">Измененный рейс (строка)</param>
+        public void RefreshData(FlightModel currentFlight)
         {
-            // table.Rows[0].Cells[0].Value = "привет";
+            var target = flights.FirstOrDefault(x => x.Id == currentFlight.Id);
+            if (target != null)
+            {
+                target.FlightNumber = currentFlight.FlightNumber;
+                target.TypeOFAircraft = currentFlight.TypeOFAircraft;
+                target.ArrivalTime = currentFlight.ArrivalTime;
+                target.NumberOFPassengers = currentFlight.NumberOFPassengers;
+                target.PassengerFee = currentFlight.PassengerFee;
+                target.CrewNumber = currentFlight.CrewNumber;
+                target.CrewFee = currentFlight.CrewFee;
+                target.ServicePercentage = currentFlight.ServicePercentage;
+
+                bindingSource.ResetBindings(false);
+            }
+        }
+
+        /// <summary>
+        /// Добавление данных (строки \ рейса)
+        /// </summary>
+        /// <param name="currentFlight">Выбранный рейс</param>
+        public void AddData(FlightModel currentFlight)
+        {
+            flights.Add(currentFlight);
+            bindingSource.ResetBindings(false);
         }
     }
 }

@@ -162,9 +162,11 @@
             Table.ShowEditingIcon = false;
             Table.Size = new Size(800, 385);
             Table.TabIndex = 3;
+            Table.CellClick += Table_CellClick;
             // 
             // FlightNumberColumn
             // 
+            FlightNumberColumn.DataPropertyName = "FlightNumber";
             FlightNumberColumn.HeaderText = "Номер рейса";
             FlightNumberColumn.MinimumWidth = 8;
             FlightNumberColumn.Name = "FlightNumberColumn";
@@ -172,6 +174,7 @@
             // 
             // TypeOFAircraftColumn
             // 
+            TypeOFAircraftColumn.DataPropertyName = "TypeOFAircraft";
             TypeOFAircraftColumn.HeaderText = "Тип самолета";
             TypeOFAircraftColumn.MinimumWidth = 8;
             TypeOFAircraftColumn.Name = "TypeOFAircraftColumn";
@@ -179,6 +182,7 @@
             // 
             // ArrivalTimeColumn
             // 
+            ArrivalTimeColumn.DataPropertyName = "ArrivalTime";
             ArrivalTimeColumn.HeaderText = "Время прибытия";
             ArrivalTimeColumn.MinimumWidth = 8;
             ArrivalTimeColumn.Name = "ArrivalTimeColumn";
@@ -186,6 +190,7 @@
             // 
             // NumberOFPassengersColumn
             // 
+            NumberOFPassengersColumn.DataPropertyName = "NumberOFPassengers";
             NumberOFPassengersColumn.HeaderText = "Количество пассажиров";
             NumberOFPassengersColumn.MinimumWidth = 8;
             NumberOFPassengersColumn.Name = "NumberOFPassengersColumn";
@@ -193,6 +198,7 @@
             // 
             // PassengerFeeColumn
             // 
+            PassengerFeeColumn.DataPropertyName = "PassengerFee";
             PassengerFeeColumn.HeaderText = "Сбор на пассажира";
             PassengerFeeColumn.MinimumWidth = 8;
             PassengerFeeColumn.Name = "PassengerFeeColumn";
@@ -200,6 +206,7 @@
             // 
             // CrewNumberColumn
             // 
+            CrewNumberColumn.DataPropertyName = "CrewNumber";
             CrewNumberColumn.HeaderText = "Количество экипажа";
             CrewNumberColumn.MinimumWidth = 8;
             CrewNumberColumn.Name = "CrewNumberColumn";
@@ -207,6 +214,7 @@
             // 
             // CrewFeeColumn
             // 
+            CrewFeeColumn.DataPropertyName = "CrewFee";
             CrewFeeColumn.HeaderText = "Сбор на экипаж";
             CrewFeeColumn.MinimumWidth = 8;
             CrewFeeColumn.Name = "CrewFeeColumn";
@@ -214,6 +222,7 @@
             // 
             // ServicePercentageColumn
             // 
+            ServicePercentageColumn.DataPropertyName = "ServicePercentage";
             ServicePercentageColumn.HeaderText = "Процент надбавки";
             ServicePercentageColumn.MinimumWidth = 8;
             ServicePercentageColumn.Name = "ServicePercentageColumn";
@@ -221,6 +230,7 @@
             // 
             // RevenueColumn
             // 
+            RevenueColumn.DataPropertyName = "Revenue";
             RevenueColumn.HeaderText = "Вырчука";
             RevenueColumn.MinimumWidth = 8;
             RevenueColumn.Name = "RevenueColumn";
@@ -237,7 +247,6 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Аэропорт";
-            Load += MainForm_Load;
             ToolStrip.ResumeLayout(false);
             ToolStrip.PerformLayout();
             StatusStrip.ResumeLayout(false);

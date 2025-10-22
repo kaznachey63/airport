@@ -39,13 +39,14 @@
             NumericUpDownFlightNumber = new NumericUpDown();
             ComboBox = new ComboBox();
             TimePicker = new DateTimePicker();
-            NumericUpDownNumberPassengers = new NumericUpDown();
+            NumericUpDownNumberPassenger = new NumericUpDown();
             NumericUpDownCrewNumber = new NumericUpDown();
             NumericUpDownCrewFee = new NumericUpDown();
             NumericUpDownPercentage = new NumericUpDown();
             NumericUpDownPassengerFee = new NumericUpDown();
+            SaveButton = new Button();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownFlightNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)NumericUpDownNumberPassengers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownNumberPassenger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewFee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownPercentage).BeginInit();
@@ -55,7 +56,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 39);
+            label1.Location = new Point(42, 39);
             label1.Name = "label1";
             label1.Size = new Size(69, 50);
             label1.TabIndex = 0;
@@ -64,7 +65,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(27, 102);
+            label2.Location = new Point(42, 102);
             label2.Name = "label2";
             label2.Size = new Size(87, 50);
             label2.TabIndex = 1;
@@ -73,7 +74,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(27, 165);
+            label3.Location = new Point(42, 165);
             label3.Name = "label3";
             label3.Size = new Size(92, 50);
             label3.TabIndex = 2;
@@ -82,7 +83,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(27, 237);
+            label4.Location = new Point(42, 237);
             label4.Name = "label4";
             label4.Size = new Size(111, 50);
             label4.TabIndex = 3;
@@ -91,7 +92,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(27, 307);
+            label5.Location = new Point(42, 307);
             label5.Name = "label5";
             label5.Size = new Size(99, 50);
             label5.TabIndex = 4;
@@ -100,7 +101,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(27, 370);
+            label6.Location = new Point(42, 370);
             label6.Name = "label6";
             label6.Size = new Size(107, 50);
             label6.TabIndex = 5;
@@ -109,7 +110,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(27, 435);
+            label7.Location = new Point(42, 435);
             label7.Name = "label7";
             label7.Size = new Size(79, 50);
             label7.TabIndex = 6;
@@ -118,7 +119,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(27, 498);
+            label8.Location = new Point(42, 498);
             label8.Name = "label8";
             label8.Size = new Size(89, 50);
             label8.TabIndex = 7;
@@ -126,7 +127,8 @@
             // 
             // NumericUpDownFlightNumber
             // 
-            NumericUpDownFlightNumber.Location = new Point(166, 39);
+            NumericUpDownFlightNumber.Location = new Point(181, 39);
+            NumericUpDownFlightNumber.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
             NumericUpDownFlightNumber.Name = "NumericUpDownFlightNumber";
             NumericUpDownFlightNumber.Size = new Size(180, 31);
             NumericUpDownFlightNumber.TabIndex = 9;
@@ -134,7 +136,7 @@
             // ComboBox
             // 
             ComboBox.FormattingEnabled = true;
-            ComboBox.Location = new Point(166, 102);
+            ComboBox.Location = new Point(181, 102);
             ComboBox.Name = "ComboBox";
             ComboBox.Size = new Size(182, 33);
             ComboBox.TabIndex = 10;
@@ -142,21 +144,23 @@
             // TimePicker
             // 
             TimePicker.Format = DateTimePickerFormat.Time;
-            TimePicker.Location = new Point(166, 184);
+            TimePicker.Location = new Point(181, 184);
             TimePicker.Name = "TimePicker";
             TimePicker.Size = new Size(182, 31);
             TimePicker.TabIndex = 11;
             // 
-            // NumericUpDownNumberPassengers
+            // NumericUpDownNumberPassenger
             // 
-            NumericUpDownNumberPassengers.Location = new Point(166, 256);
-            NumericUpDownNumberPassengers.Name = "NumericUpDownNumberPassengers";
-            NumericUpDownNumberPassengers.Size = new Size(180, 31);
-            NumericUpDownNumberPassengers.TabIndex = 12;
+            NumericUpDownNumberPassenger.Location = new Point(181, 256);
+            NumericUpDownNumberPassenger.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+            NumericUpDownNumberPassenger.Name = "NumericUpDownNumberPassenger";
+            NumericUpDownNumberPassenger.Size = new Size(180, 31);
+            NumericUpDownNumberPassenger.TabIndex = 12;
             // 
             // NumericUpDownCrewNumber
             // 
-            NumericUpDownCrewNumber.Location = new Point(166, 384);
+            NumericUpDownCrewNumber.Location = new Point(181, 384);
+            NumericUpDownCrewNumber.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
             NumericUpDownCrewNumber.Name = "NumericUpDownCrewNumber";
             NumericUpDownCrewNumber.Size = new Size(180, 31);
             NumericUpDownCrewNumber.TabIndex = 13;
@@ -164,7 +168,8 @@
             // NumericUpDownCrewFee
             // 
             NumericUpDownCrewFee.DecimalPlaces = 2;
-            NumericUpDownCrewFee.Location = new Point(166, 442);
+            NumericUpDownCrewFee.Location = new Point(181, 442);
+            NumericUpDownCrewFee.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
             NumericUpDownCrewFee.Name = "NumericUpDownCrewFee";
             NumericUpDownCrewFee.Size = new Size(180, 31);
             NumericUpDownCrewFee.TabIndex = 18;
@@ -172,7 +177,8 @@
             // NumericUpDownPercentage
             // 
             NumericUpDownPercentage.DecimalPlaces = 2;
-            NumericUpDownPercentage.Location = new Point(166, 507);
+            NumericUpDownPercentage.Location = new Point(181, 507);
+            NumericUpDownPercentage.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
             NumericUpDownPercentage.Name = "NumericUpDownPercentage";
             NumericUpDownPercentage.Size = new Size(180, 31);
             NumericUpDownPercentage.TabIndex = 19;
@@ -180,21 +186,33 @@
             // NumericUpDownPassengerFee
             // 
             NumericUpDownPassengerFee.DecimalPlaces = 2;
-            NumericUpDownPassengerFee.Location = new Point(166, 317);
+            NumericUpDownPassengerFee.Location = new Point(181, 317);
+            NumericUpDownPassengerFee.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
             NumericUpDownPassengerFee.Name = "NumericUpDownPassengerFee";
             NumericUpDownPassengerFee.Size = new Size(180, 31);
             NumericUpDownPassengerFee.TabIndex = 20;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(42, 565);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(321, 34);
+            SaveButton.TabIndex = 21;
+            SaveButton.Text = "Сохранить";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // FlightForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(409, 576);
+            ClientSize = new Size(398, 624);
+            Controls.Add(SaveButton);
             Controls.Add(NumericUpDownPassengerFee);
             Controls.Add(NumericUpDownPercentage);
             Controls.Add(NumericUpDownCrewFee);
             Controls.Add(NumericUpDownCrewNumber);
-            Controls.Add(NumericUpDownNumberPassengers);
+            Controls.Add(NumericUpDownNumberPassenger);
             Controls.Add(TimePicker);
             Controls.Add(ComboBox);
             Controls.Add(NumericUpDownFlightNumber);
@@ -207,12 +225,14 @@
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
+            MaximumSize = new Size(420, 680);
+            MinimumSize = new Size(420, 680);
             Name = "FlightForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Параметры рейса";
             Load += FlightForm_Load;
             ((System.ComponentModel.ISupportInitialize)NumericUpDownFlightNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)NumericUpDownNumberPassengers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownNumberPassenger).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewFee).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownPercentage).EndInit();
@@ -234,10 +254,11 @@
         private NumericUpDown NumericUpDownFlightNumber;
         private ComboBox ComboBox;
         private DateTimePicker TimePicker;
-        private NumericUpDown NumericUpDownNumberPassengers;
+        private NumericUpDown NumericUpDownNumberPassenger;
         private NumericUpDown NumericUpDownCrewNumber;
         private NumericUpDown NumericUpDownCrewFee;
         private NumericUpDown NumericUpDownPercentage;
         private NumericUpDown NumericUpDownPassengerFee;
+        private Button SaveButton;
     }
 }
