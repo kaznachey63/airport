@@ -76,8 +76,7 @@ namespace AirportApp
             if (rightTODelete == DialogResult.Yes)
             {
                 flights.Remove(target);
-                bindingSource.ResetBindings(false);
-                SetStatistics();
+                SetTable();
             }
         }
 
@@ -98,9 +97,7 @@ namespace AirportApp
                 target.CrewNumber = currentFlight.CrewNumber;
                 target.CrewFee = currentFlight.CrewFee;
                 target.ServicePercentage = currentFlight.ServicePercentage;
-
-                bindingSource.ResetBindings(false);
-                SetStatistics();
+                SetTable();
             }
         }
 
@@ -111,8 +108,7 @@ namespace AirportApp
         public void AddData(FlightModel currentFlight)
         {
             flights.Add(currentFlight);
-            bindingSource.ResetBindings(false);
-            SetStatistics();
+            SetTable();
         }
 
         private void SetStatistics()
@@ -121,6 +117,12 @@ namespace AirportApp
             mainForm.NumberOFPassengers.Text = $"Количество пассажиров: {flights.Sum(f => f.NumberOFPassengers)}";
             mainForm.CrewNumber.Text = $"Количество экипажа: {flights.Sum(c => c.CrewNumber)}";
             mainForm.TotalRevenue.Text = $"Общая выручка: {flights.Sum(r => r.Revenue)}";
+        }
+
+        private void SetTable()
+        {
+            bindingSource.ResetBindings(false);
+            SetStatistics();
         }
     }
 }
