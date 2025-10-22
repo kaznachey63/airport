@@ -24,6 +24,11 @@ namespace AirportApp.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            if (!Validation())
+            {
+                return;
+            }
+
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -75,6 +80,23 @@ namespace AirportApp.Forms
 
             ComboBox.DataSource = Enum.GetValues(typeof(TypeOFAircraft));
             ComboBox.DataBindings.Add("SelectedItem", targetFlight, "TypeOFAircraft");
+        }
+
+        private bool Validation()
+        {
+            if (NumericUpDownFlightNumber.Value == 0 || ComboBox?.SelectedItem?.ToString() == "None" ||
+                NumericUpDownNumberPassenger.Value == 0 || NumericUpDownPassengerFee.Value == 0 ||
+                NumericUpDownCrewNumber.Value == 0 || NumericUpDownCrewFee.Value == 0 ||
+                NumericUpDownPercentage.Value == 0
+                )
+            {
+                MessageBox.Show("Не все поля заполнены!");
+                return false;
+            }  
+            else
+            {
+                return true;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace AirportApp
         private readonly List<FlightModel> flights = new();
         private readonly BindingSource bindingSource = new();
         private readonly MainForm mainForm;
+
         public Core(MainForm MF)
         {
             mainForm = MF;
