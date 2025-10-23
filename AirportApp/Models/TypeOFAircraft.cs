@@ -1,4 +1,4 @@
-﻿namespace AirportApp
+﻿namespace AirportApp.Models
 {
     /// <summary>
     /// Тип самолета

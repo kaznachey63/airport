@@ -1,10 +1,11 @@
-﻿using AirportApp.Models;
+﻿using AirportApp.Infostructure;
+using AirportApp.Models;
 
 namespace AirportApp.Forms
 {
     public partial class FlightForm : Form
     {
-        private FlightModel? targetFlight;
+        private FlightModel targetFlight = null!;
 
         public FlightForm(FlightModel? sourceFlight = null)
         {
@@ -15,7 +16,7 @@ namespace AirportApp.Forms
         /// <summary>
         /// Выбранный рейс
         /// </summary>
-        public FlightModel CurrentFlight => targetFlight!;
+        public FlightModel CurrentFlight => targetFlight;
 
         private void FlightForm_Load(object sender, EventArgs e)
         {
@@ -69,17 +70,16 @@ namespace AirportApp.Forms
 
         private void InitializeDataBindings()
         {
-            NumericUpDownFlightNumber.DataBindings.Add("Value", targetFlight, "FlightNumber");
-            NumericUpDownNumberPassenger.DataBindings.Add("Value", targetFlight, "NumberOFPassengers");
-            NumericUpDownPassengerFee.DataBindings.Add("Value", targetFlight, "PassengerFee");
-            NumericUpDownCrewNumber.DataBindings.Add("Value", targetFlight, "CrewNumber");
-            NumericUpDownCrewFee.DataBindings.Add("Value", targetFlight, "CrewFee");
-            NumericUpDownPercentage.DataBindings.Add("Value", targetFlight, "ServicePercentage");
-
-            TimePicker.DataBindings.Add("Value", targetFlight, "ArrivalTime");
-
+            NumericUpDownFlightNumber.AddBinding(x => x.Value, targetFlight, x => x.FlightNumber, errorProvider);
+            NumericUpDownNumberPassenger.AddBinding(x => x.Value, targetFlight, x => x.NumberOFPassengers, errorProvider);
+            NumericUpDownPassengerFee.AddBinding(x => x.Value, targetFlight, x => x.PassengerFee, errorProvider);
+            NumericUpDownCrewNumber.AddBinding(x => x.Value, targetFlight, x => x.CrewNumber, errorProvider);
+            NumericUpDownCrewFee.AddBinding(x => x.Value, targetFlight, x => x.CrewFee, errorProvider);
+            NumericUpDownPercentage.AddBinding(x => x.Value, targetFlight, x => x.ServicePercentage, errorProvider);
+            TimePicker.MinDate = DateTime.Now.Date;
+            TimePicker.AddBinding(x => x.Value, targetFlight, x => x.ArrivalTime, errorProvider);
             ComboBox.DataSource = Enum.GetValues(typeof(TypeOFAircraft));
-            ComboBox.DataBindings.Add("SelectedItem", targetFlight, "TypeOFAircraft");
+            ComboBox.AddBinding(x => x.SelectedItem, targetFlight, x => x.TypeOFAircraft, errorProvider);
         }
 
         private bool Validation()

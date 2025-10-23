@@ -15,7 +15,7 @@
         /// </summary>
         public int FlightNumber { get; set; }
 
-        /// <inheritdoc cref="AirportApp.TypeOFAircraft" />
+        /// <inheritdoc cref="Models.TypeOFAircraft" />
         public TypeOFAircraft TypeOFAircraft { get; set; }
 
         /// <summary>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -45,12 +46,14 @@
             NumericUpDownPercentage = new NumericUpDown();
             NumericUpDownPassengerFee = new NumericUpDown();
             SaveButton = new Button();
+            errorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)NumericUpDownFlightNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownNumberPassenger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewFee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownPercentage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownPassengerFee).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -202,6 +205,11 @@
             SaveButton.UseVisualStyleBackColor = true;
             SaveButton.Click += SaveButton_Click;
             // 
+            // errorProvider
+            // 
+            errorProvider.BlinkRate = 1;
+            errorProvider.ContainerControl = this;
+            // 
             // FlightForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -237,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)NumericUpDownCrewFee).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownPercentage).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownPassengerFee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -260,5 +269,6 @@
         private NumericUpDown NumericUpDownPercentage;
         private NumericUpDown NumericUpDownPassengerFee;
         private Button SaveButton;
+        private ErrorProvider errorProvider;
     }
 }

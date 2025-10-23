@@ -17,6 +17,7 @@ namespace AirportApp
             mainForm = MF;
         }
 
+        // -------------- MainForm ---------------------------------------------
         /// <summary>
         /// Загрузка данных
         /// </summary>
@@ -111,7 +112,9 @@ namespace AirportApp
             flights.Add(currentFlight);
             SetTable();
         }
+        // -------------------------------------------------s
 
+        // -------------- private ----------------------------
         private void SetStatistics()
         {
             mainForm.NumberOFFlights.Text = $"Количество рейсов: {flights.Count}";
@@ -125,5 +128,6 @@ namespace AirportApp
             bindingSource.ResetBindings(false);
             SetStatistics();
         }
+        // ----------------------------------------------------
     }
 }
