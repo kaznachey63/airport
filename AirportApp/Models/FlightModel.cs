@@ -1,4 +1,5 @@
 ﻿using AirportApp.Infostructure;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AirportApp.Models
@@ -22,20 +23,26 @@ namespace AirportApp.Models
         /// <summary>
         /// Номер рейса
         /// </summary>
-        [Required(ErrorMessage = "Номер рейса обязателен для заполнения")]
+        [Display(Name = "Номер рейса")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinNumberFlight, Constants.MaxNumberFlight, ErrorMessage = "{0} - должно быть больше {1}")]
         public int FlightNumber { get; set; }
 
-        /// <inheritdoc cref="Models.TypeOfAircraft" />
-        [Required(ErrorMessage = "Тип не должен быть None")]
+        /// <summary>
+        /// Тип самолета
+        /// </summary>
+        [Display(Name = "Тип самолета")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
         public TypeOfAircraft TypeOfAircraft { get; set; }
 
         /// <summary>
         /// Время прибытия
         /// </summary>
+        [Display(Name = "Время прибытия")]
         public DateTime ArrivalTime { get; set; }
 
         /// <summary>
-        /// Количество пассажаиров
+        /// Количество пассажиров
         /// </summary>
         [Display(Name = "Количество пассажиров")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
@@ -45,7 +52,9 @@ namespace AirportApp.Models
         /// <summary>
         /// Сбор на пассажира
         /// </summary>
-        [Required(ErrorMessage = "Сбор на пассажира обязателен для заполнения")]
+        [Display(Name = "Сбор на пассажира")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinPassangerFee, Constants.MaxPassangerFee, ErrorMessage = "{0} - должно быть больше {1}")]
         public decimal PassengerFee { get; set; }
 
         /// <summary>
@@ -59,28 +68,31 @@ namespace AirportApp.Models
         /// <summary>
         /// Сбор на экипаж
         /// </summary>
-        [Required(ErrorMessage = "Сбор на экипаж обязателен для заполнения")]
+        [Display(Name = "Сбор на экипаж")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinCrewFee, Constants.MaxCrewFee, ErrorMessage = "{0} - должно быть больше {1}")]
         public decimal CrewFee { get; set; }
 
         /// <summary>
         /// Процент надбавки за обслуживание
         /// </summary>
-        [Required(ErrorMessage = "Процент обслуживания обязателен для заполнения")]
+        [Display(Name = "Процент обслуживания")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinPercent, Constants.MaxPercent, ErrorMessage = "{0} - должно быть от {1} до {2}")]
         public decimal ServicePercentage { get; set; }
 
         /// <summary>
         /// Выручка
         /// </summary>
-        public decimal Revenue => (NumberOfPassengers * PassengerFee + CrewNumber * CrewFee) * (Constants.BaseSum + ServicePercentage / Constants.Percent);
+        [Display(Name = "Выручка")]
+        public decimal Revenue => (NumberOfPassengers * PassengerFee + CrewNumber * CrewFee) * (Constants.BaseSum + ServicePercentage / Constants.MaxPercent);
 
         /// <summary>
         /// Клон модели
         /// </summary>
-        /// <returns></returns>
         public FlightModel Clone()
         {
             return (FlightModel)this.MemberwiseClone();
         }
-
     }
 }

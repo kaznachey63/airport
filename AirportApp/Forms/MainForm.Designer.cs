@@ -36,8 +36,8 @@
             toolStripSeparator2 = new ToolStripSeparator();
             DeleteButton = new ToolStripButton();
             StatusStrip = new StatusStrip();
-            NumberOFFlights = new ToolStripStatusLabel();
-            NumberOFPassengers = new ToolStripStatusLabel();
+            NumberOfFlights = new ToolStripStatusLabel();
+            NumberOfPassengers = new ToolStripStatusLabel();
             CrewNumber = new ToolStripStatusLabel();
             TotalRevenue = new ToolStripStatusLabel();
             Table = new DataGridView();
@@ -112,24 +112,24 @@
             // StatusStrip
             // 
             StatusStrip.ImageScalingSize = new Size(24, 24);
-            StatusStrip.Items.AddRange(new ToolStripItem[] { NumberOFFlights, NumberOFPassengers, CrewNumber, TotalRevenue });
+            StatusStrip.Items.AddRange(new ToolStripItem[] { NumberOfFlights, NumberOfPassengers, CrewNumber, TotalRevenue });
             StatusStrip.Location = new Point(0, 418);
             StatusStrip.Name = "StatusStrip";
             StatusStrip.Size = new Size(800, 32);
             StatusStrip.TabIndex = 2;
             StatusStrip.Text = "statusStrip1";
             // 
-            // NumberOFFlights
+            // NumberOfFlights
             // 
-            NumberOFFlights.Name = "NumberOFFlights";
-            NumberOFFlights.Size = new Size(176, 25);
-            NumberOFFlights.Text = "Количество записей";
+            NumberOfFlights.Name = "NumberOfFlights";
+            NumberOfFlights.Size = new Size(176, 25);
+            NumberOfFlights.Text = "Количество записей";
             // 
-            // NumberOFPassengers
+            // NumberOfPassengers
             // 
-            NumberOFPassengers.Name = "NumberOFPassengers";
-            NumberOFPassengers.Size = new Size(211, 25);
-            NumberOFPassengers.Text = "Количество пассажиров";
+            NumberOfPassengers.Name = "NumberOfPassengers";
+            NumberOfPassengers.Size = new Size(211, 25);
+            NumberOfPassengers.Text = "Количество пассажиров";
             // 
             // CrewNumber
             // 
@@ -273,8 +273,8 @@
         private DataGridViewTextBoxColumn CrewFeeColumn;
         private DataGridViewTextBoxColumn ServicePercentageColumn;
         private DataGridViewTextBoxColumn RevenueColumn;
-        public ToolStripStatusLabel NumberOFFlights;
-        public ToolStripStatusLabel NumberOFPassengers;
+        public ToolStripStatusLabel NumberOfFlights;
+        public ToolStripStatusLabel NumberOfPassengers;
         public ToolStripStatusLabel CrewNumber;
         public ToolStripStatusLabel TotalRevenue;
         private StatusStrip StatusStrip;
