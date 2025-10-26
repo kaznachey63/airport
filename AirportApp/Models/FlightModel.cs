@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AirportApp.Infostructure;
+using System.ComponentModel.DataAnnotations;
 
 namespace AirportApp.Models
 {
@@ -36,8 +37,9 @@ namespace AirportApp.Models
         /// <summary>
         /// Количество пассажаиров
         /// </summary>
-        [Required(ErrorMessage = "Количество пассажиров обязательно для заполнения")]
-        [Range(1, int.MaxValue, ErrorMessage = "Минимальное количество пассажиров - 1")]
+        [Display(Name = "Количество пассажиров")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinPassengerNumber, Constants.MaxPassengerNumber, ErrorMessage = "{0} - {1}")]
         public int NumberOfPassengers { get; set; }
 
         /// <summary>
@@ -49,8 +51,9 @@ namespace AirportApp.Models
         /// <summary>
         /// Количество экипажа
         /// </summary>
-        [Required(ErrorMessage = "Количество экипажа обязательно для заполнения")]
-        [Range(1, int.MaxValue, ErrorMessage = "Минимальное количество экипажа - 1")]
+        [Display(Name = "Количество экипажа")]
+        [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinCrewNumber, Constants.MaxCrewNumber, ErrorMessage = "{0} - {1}")]
         public int CrewNumber { get; set; }
 
         /// <summary>
@@ -68,7 +71,7 @@ namespace AirportApp.Models
         /// <summary>
         /// Выручка
         /// </summary>
-        public decimal Revenue => (NumberOfPassengers * PassengerFee + CrewNumber * CrewFee) * (1 + ServicePercentage / 100);
+        public decimal Revenue => (NumberOfPassengers * PassengerFee + CrewNumber * CrewFee) * (Constants.BaseSum + ServicePercentage / Constants.Percent);
 
         /// <summary>
         /// Клон модели
