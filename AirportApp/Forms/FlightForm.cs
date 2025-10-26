@@ -1,5 +1,6 @@
 ﻿using AirportApp.Infostructure;
 using AirportApp.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace AirportApp.Forms
 {
@@ -13,6 +14,7 @@ namespace AirportApp.Forms
             DetermineSource(sourceFlight);
         }
 
+
         /// <summary>
         /// Выбранный рейс
         /// </summary>
@@ -25,8 +27,11 @@ namespace AirportApp.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (!Validation())
+            var context = new ValidationContext(CurrentFlight);
+            var results = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(CurrentFlight, context, results, true))
             {
+                MessageBox.Show("У вас ошибки в заполнении данных", "Валидация", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -38,48 +43,26 @@ namespace AirportApp.Forms
         {
             if (sourceFlight != null)
             {
-                targetFlight = new FlightModel
-                {
-                    Id = sourceFlight.Id,
-                    FlightNumber = sourceFlight.FlightNumber,
-                    TypeOFAircraft = sourceFlight.TypeOFAircraft,
-                    ArrivalTime = sourceFlight.ArrivalTime,
-                    NumberOFPassengers = sourceFlight.NumberOFPassengers,
-                    PassengerFee = sourceFlight.PassengerFee,
-                    CrewNumber = sourceFlight.CrewNumber,
-                    CrewFee = sourceFlight.CrewFee,
-                    ServicePercentage = sourceFlight.ServicePercentage,
-                };
+                targetFlight = sourceFlight.Clone();
             }
             else
             {
-                targetFlight = new FlightModel
-                {
-                    Id = Guid.NewGuid(),
-                    FlightNumber = 0,
-                    TypeOFAircraft = TypeOFAircraft.None,
-                    ArrivalTime = DateTime.Now,
-                    NumberOFPassengers = 0,
-                    PassengerFee = 0,
-                    CrewNumber = 0,
-                    CrewFee = 0,
-                    ServicePercentage = 0,
-                };
+                targetFlight = new FlightModel();
             }
         }
 
         private void InitializeDataBindings()
         {
             NumericUpDownFlightNumber.AddBinding(x => x.Value, targetFlight, x => x.FlightNumber, errorProvider);
-            NumericUpDownNumberPassenger.AddBinding(x => x.Value, targetFlight, x => x.NumberOFPassengers, errorProvider);
+            NumericUpDownNumberPassenger.AddBinding(x => x.Value, targetFlight, x => x.NumberOfPassengers, errorProvider);
             NumericUpDownPassengerFee.AddBinding(x => x.Value, targetFlight, x => x.PassengerFee, errorProvider);
             NumericUpDownCrewNumber.AddBinding(x => x.Value, targetFlight, x => x.CrewNumber, errorProvider);
             NumericUpDownCrewFee.AddBinding(x => x.Value, targetFlight, x => x.CrewFee, errorProvider);
             NumericUpDownPercentage.AddBinding(x => x.Value, targetFlight, x => x.ServicePercentage, errorProvider);
             TimePicker.MinDate = DateTime.Now.Date;
             TimePicker.AddBinding(x => x.Value, targetFlight, x => x.ArrivalTime, errorProvider);
-            ComboBox.DataSource = Enum.GetValues(typeof(TypeOFAircraft));
-            ComboBox.AddBinding(x => x.SelectedItem, targetFlight, x => x.TypeOFAircraft, errorProvider);
+            ComboBox.DataSource = Enum.GetValues(typeof(TypeOfAircraft));
+            ComboBox.AddBinding(x => x.SelectedItem, targetFlight, x => x.TypeOfAircraft, errorProvider);
         }
 
         private bool Validation()

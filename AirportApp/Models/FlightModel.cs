@@ -1,10 +1,25 @@
-﻿namespace AirportApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AirportApp.Models
 {
     /// <summary>
     /// Данные о рейсе
     /// </summary>
     public class FlightModel
     {
+        public FlightModel()
+        {
+            Id = Guid.NewGuid();
+            FlightNumber = 0;
+            TypeOfAircraft = TypeOfAircraft.None;
+            ArrivalTime = DateTime.Now;
+            NumberOfPassengers = 0;
+            PassengerFee = 0;
+            CrewNumber = 0;
+            CrewFee = 0;
+            ServicePercentage = 0;
+        }
+
         /// <summary>
         /// Идентификатор рейса
         /// </summary>
@@ -13,10 +28,12 @@
         /// <summary>
         /// Номер рейса
         /// </summary>
+        [Required(ErrorMessage = "Номер рейса обязателен для заполнения")]
         public int FlightNumber { get; set; }
 
-        /// <inheritdoc cref="Models.TypeOFAircraft" />
-        public TypeOFAircraft TypeOFAircraft { get; set; }
+        /// <inheritdoc cref="Models.TypeOfAircraft" />
+        [Required(ErrorMessage = "Тип не должен быть None")]
+        public TypeOfAircraft TypeOfAircraft { get; set; }
 
         /// <summary>
         /// Время прибытия
@@ -26,31 +43,48 @@
         /// <summary>
         /// Количество пассажаиров
         /// </summary>
-        public int NumberOFPassengers { get; set; }
+        [Required(ErrorMessage = "Количество пассажиров обязательно для заполнения")]
+        [Range(1, int.MaxValue, ErrorMessage = "Минимальное количество пассажиров - 1")]
+        public int NumberOfPassengers { get; set; }
 
         /// <summary>
         /// Сбор на пассажира
         /// </summary>
+        [Required(ErrorMessage = "Сбор на пассажира обязателен для заполнения")]
         public decimal PassengerFee { get; set; }
 
         /// <summary>
         /// Количество экипажа
         /// </summary>
+        [Required(ErrorMessage = "Количество экипажа обязательно для заполнения")]
+        [Range(1, int.MaxValue, ErrorMessage = "Минимальное количество экипажа - 1")]
         public int CrewNumber { get; set; }
 
         /// <summary>
         /// Сбор на экипаж
         /// </summary>
+        [Required(ErrorMessage = "Сбор на экипаж обязателен для заполнения")]
         public decimal CrewFee { get; set; }
 
         /// <summary>
         /// Процент надбавки за обслуживание
         /// </summary>
+        [Required(ErrorMessage = "Процент обслуживания обязателен для заполнения")]
         public decimal ServicePercentage { get; set; }
 
         /// <summary>
         /// Выручка
         /// </summary>
-        public decimal Revenue => (NumberOFPassengers * PassengerFee + CrewNumber * CrewFee) * (1 + ServicePercentage / 100);
+        public decimal Revenue => (NumberOfPassengers * PassengerFee + CrewNumber * CrewFee) * (1 + ServicePercentage / 100);
+
+        /// <summary>
+        /// Клон модели
+        /// </summary>
+        /// <returns></returns>
+        public FlightModel Clone()
+        {
+            return (FlightModel)this.MemberwiseClone();
+        }
+
     }
 }

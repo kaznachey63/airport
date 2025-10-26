@@ -12,9 +12,9 @@ namespace AirportApp
         private readonly BindingSource bindingSource = new();
         private readonly MainForm mainForm;
 
-        public Core(MainForm MF)
+        public Core(MainForm MainForm)
         {
-            mainForm = MF;
+            mainForm = MainForm;
         }
 
         // -------------- MainForm ---------------------------------------------
@@ -28,9 +28,9 @@ namespace AirportApp
             {
                 Id = Guid.NewGuid(),
                 FlightNumber = 504,
-                TypeOFAircraft = TypeOFAircraft.Boieng,
+                TypeOfAircraft = TypeOfAircraft.Boieng,
                 ArrivalTime = DateTime.Now,
-                NumberOFPassengers = 100,
+                NumberOfPassengers = 100,
                 PassengerFee = 12000m,
                 CrewNumber = 5,
                 CrewFee = 2000m,
@@ -74,8 +74,8 @@ namespace AirportApp
         public void DeleteButtonHandler(FlightModel flight)
         {
             var target = flights.FirstOrDefault(x => x.Id == flight.Id);
-            var rightTODelete = MessageBox.Show("Точно удалить рейс №" + target!.FlightNumber + "?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rightTODelete == DialogResult.Yes)
+            var rightToDelete = MessageBox.Show("Точно удалить рейс №" + target!.FlightNumber + "?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rightToDelete == DialogResult.Yes)
             {
                 flights.Remove(target);
                 SetTable();
@@ -92,9 +92,9 @@ namespace AirportApp
             if (target != null)
             {
                 target.FlightNumber = currentFlight.FlightNumber;
-                target.TypeOFAircraft = currentFlight.TypeOFAircraft;
+                target.TypeOfAircraft = currentFlight.TypeOfAircraft;
                 target.ArrivalTime = currentFlight.ArrivalTime;
-                target.NumberOFPassengers = currentFlight.NumberOFPassengers;
+                target.NumberOfPassengers = currentFlight.NumberOfPassengers;
                 target.PassengerFee = currentFlight.PassengerFee;
                 target.CrewNumber = currentFlight.CrewNumber;
                 target.CrewFee = currentFlight.CrewFee;
@@ -117,8 +117,8 @@ namespace AirportApp
         // -------------- private ----------------------------
         private void SetStatistics()
         {
-            mainForm.NumberOFFlights.Text = $"Количество рейсов: {flights.Count}";
-            mainForm.NumberOFPassengers.Text = $"Количество пассажиров: {flights.Sum(f => f.NumberOFPassengers)}";
+            mainForm.NumberOfFlights.Text = $"Количество рейсов: {flights.Count}";
+            mainForm.NumberOfPassengers.Text = $"Количество пассажиров: {flights.Sum(f => f.NumberOfPassengers)}";
             mainForm.CrewNumber.Text = $"Количество экипажа: {flights.Sum(c => c.CrewNumber)}";
             mainForm.TotalRevenue.Text = $"Общая выручка: {flights.Sum(r => r.Revenue)}";
         }

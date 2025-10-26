@@ -3,26 +3,26 @@
     /// <summary>
     /// Тип самолета
     /// </summary>
-    public enum TypeOFAircraft
+    public enum TypeOfAircraft
     {
         /// <summary>
         /// Пусто
         /// </summary>
-        None = 0,
+        None,
 
         /// <summary>
         /// Боинг
         /// </summary>
-        Boieng = 1,
+        Boieng,
 
         /// <summary>
         /// Аэрбас
         /// </summary>
-        Airbus = 2,
+        Airbus,
 
         /// <summary>
-        /// ОАК
+        /// Объединенная авиастроительная корпорация
         /// </summary>
-        UAC = 3
+        UnitedAircraftCorporation
     }
 }
