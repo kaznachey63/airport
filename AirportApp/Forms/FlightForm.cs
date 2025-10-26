@@ -12,7 +12,7 @@ namespace AirportApp.Forms
         {
             InitializeComponent();
             DetermineSource(sourceFlight);
-            LinkToErrorProvider();
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
         }
 
 
@@ -76,71 +76,11 @@ namespace AirportApp.Forms
             {
                 MessageBox.Show("Не все поля заполнены!");
                 return false;
-            }  
+            }
             else
             {
                 return true;
             }
-        }
-
-        private void LinkToErrorProvider()
-        {
-            // Привязка контролов к полям модели с ErrorProvider
-            NumericUpDownFlightNumber.AddBinding(
-                n => n.Value,
-                CurrentFlight,
-                f => f.FlightNumber,
-                errorProvider
-            );
-
-            ComboBox.AddBinding(
-                c => c.SelectedItem,
-                CurrentFlight,
-                f => f.TypeOfAircraft,
-                errorProvider
-            );
-
-            TimePicker.AddBinding(
-                t => t.Value,
-                CurrentFlight,
-                f => f.ArrivalTime
-            // Можно без errorProvider, если валидация не нужна
-            );
-
-            NumericUpDownNumberPassenger.AddBinding(
-                n => n.Value,
-                CurrentFlight,
-                f => f.NumberOfPassengers,
-                errorProvider
-            );
-
-            NumericUpDownPassengerFee.AddBinding(
-                n => n.Value,
-                CurrentFlight,
-                f => f.PassengerFee,
-                errorProvider
-            );
-
-            NumericUpDownCrewNumber.AddBinding(
-                n => n.Value,
-                CurrentFlight,
-                f => f.CrewNumber,
-                errorProvider
-            );
-
-            NumericUpDownCrewFee.AddBinding(
-                n => n.Value,
-                CurrentFlight,
-                f => f.CrewFee,
-                errorProvider
-            );
-
-            NumericUpDownPercentage.AddBinding(
-                n => n.Value,
-                CurrentFlight,
-                f => f.ServicePercentage,
-                errorProvider
-            );
         }
     }
 }
