@@ -3,7 +3,7 @@
     /// <summary>
     /// Константы
     /// </summary>
-    public static class Constants
+    public class Constants
     {
         /// <summary>
         /// Отступ от нижнего края экрана для игровой области
