@@ -10,14 +10,7 @@ namespace AirportApp.Models
         public FlightModel()
         {
             Id = Guid.NewGuid();
-            FlightNumber = 0;
-            TypeOfAircraft = TypeOfAircraft.None;
             ArrivalTime = DateTime.Now;
-            NumberOfPassengers = 0;
-            PassengerFee = 0;
-            CrewNumber = 0;
-            CrewFee = 0;
-            ServicePercentage = 0;
         }
 
         /// <summary>
