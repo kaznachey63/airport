@@ -53,21 +53,31 @@
         /// <summary>
         /// Минимальная плата за пассажира
         /// </summary>
-        public const double MinPassangerFee = 0.01;
+        public const double MinPassangerFee = 1;
 
         /// <summary>
         /// Максимальная плата за пассажира
         /// </summary>
-        public const double MaxPassangerFee = 1000.0; // исправил, чтобы имело смысл
+        public const double MaxPassangerFee = 20000.0; // исправил, чтобы имело смысл
 
         /// <summary>
         /// Минимальная плата за члена экипажа
         /// </summary>
-        public const double MinCrewFee = 0.01;
+        public const double MinCrewFee = 1;
 
         /// <summary>
         /// Максимальная плата за члена экипажа
         /// </summary>
-        public const double MaxCrewFee = 1000.0; // исправил, чтобы имело смысл
+        public const double MaxCrewFee = 20000.0; // исправил, чтобы имело смысл
+
+        /// <summary>
+        /// Минмальный элемент для комбобокса
+        /// </summary>
+        public const int MinCombobx = 0;
+
+        /// <summary>
+        /// Макс. эл. для комбобоксав
+        /// </summary>
+        public const int MaxCombobx = 3;
     }
 }

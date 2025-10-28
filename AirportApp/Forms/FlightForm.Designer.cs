@@ -135,6 +135,7 @@
             NumericUpDownFlightNumber.Name = "NumericUpDownFlightNumber";
             NumericUpDownFlightNumber.Size = new Size(180, 31);
             NumericUpDownFlightNumber.TabIndex = 9;
+            NumericUpDownFlightNumber.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // ComboBox
             // 
@@ -159,6 +160,7 @@
             NumericUpDownNumberPassenger.Name = "NumericUpDownNumberPassenger";
             NumericUpDownNumberPassenger.Size = new Size(180, 31);
             NumericUpDownNumberPassenger.TabIndex = 12;
+            NumericUpDownNumberPassenger.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // NumericUpDownCrewNumber
             // 
@@ -167,6 +169,7 @@
             NumericUpDownCrewNumber.Name = "NumericUpDownCrewNumber";
             NumericUpDownCrewNumber.Size = new Size(180, 31);
             NumericUpDownCrewNumber.TabIndex = 13;
+            NumericUpDownCrewNumber.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // NumericUpDownCrewFee
             // 
@@ -176,6 +179,7 @@
             NumericUpDownCrewFee.Name = "NumericUpDownCrewFee";
             NumericUpDownCrewFee.Size = new Size(180, 31);
             NumericUpDownCrewFee.TabIndex = 18;
+            NumericUpDownCrewFee.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // NumericUpDownPercentage
             // 
@@ -185,6 +189,7 @@
             NumericUpDownPercentage.Name = "NumericUpDownPercentage";
             NumericUpDownPercentage.Size = new Size(180, 31);
             NumericUpDownPercentage.TabIndex = 19;
+            NumericUpDownPercentage.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // NumericUpDownPassengerFee
             // 
@@ -194,6 +199,7 @@
             NumericUpDownPassengerFee.Name = "NumericUpDownPassengerFee";
             NumericUpDownPassengerFee.Size = new Size(180, 31);
             NumericUpDownPassengerFee.TabIndex = 20;
+            NumericUpDownPassengerFee.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // SaveButton
             // 

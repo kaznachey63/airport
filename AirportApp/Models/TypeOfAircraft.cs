@@ -6,11 +6,6 @@
     public enum TypeOfAircraft
     {
         /// <summary>
-        /// Пусто
-        /// </summary>
-        None,
-
-        /// <summary>
         /// Боинг
         /// </summary>
         Boieng,

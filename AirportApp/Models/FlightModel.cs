@@ -1,5 +1,4 @@
 ﻿using AirportApp.Infostructure;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AirportApp.Models
@@ -13,6 +12,12 @@ namespace AirportApp.Models
         {
             Id = Guid.NewGuid();
             ArrivalTime = DateTime.Now;
+            FlightNumber = 1;
+            NumberOfPassengers = 1;
+            PassengerFee = 1;
+            CrewNumber = 1;
+            CrewFee = 1;
+            ServicePercentage = 1;
         }
 
         /// <summary>
@@ -33,6 +38,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Тип самолета")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
+        [Range(Constants.MinCombobx, Constants.MaxCombobx, ErrorMessage = "{0} - {1}")]
         public TypeOfAircraft TypeOfAircraft { get; set; }
 
         /// <summary>
