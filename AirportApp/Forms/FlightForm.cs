@@ -65,22 +65,5 @@ namespace AirportApp.Forms
             ComboBox.DataSource = Enum.GetValues(typeof(TypeOfAircraft));
             ComboBox.AddBinding(x => x.SelectedItem, targetFlight, x => x.TypeOfAircraft, errorProvider);
         }
-
-        private bool Validation()
-        {
-            if (NumericUpDownFlightNumber.Value == 0 || ComboBox?.SelectedItem?.ToString() == "None" ||
-                NumericUpDownNumberPassenger.Value == 0 || NumericUpDownPassengerFee.Value == 0 ||
-                NumericUpDownCrewNumber.Value == 0 || NumericUpDownCrewFee.Value == 0 ||
-                NumericUpDownPercentage.Value == 0
-                )
-            {
-                MessageBox.Show("Не все поля заполнены!");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
     }
 }

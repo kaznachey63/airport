@@ -1,5 +1,6 @@
-﻿using AirportApp.Models;
-
+﻿using AirportApp.Infostructure;
+using AirportApp.Models;
+    
 namespace AirportApp
 {
     public partial class MainForm : Form
@@ -41,6 +42,20 @@ namespace AirportApp
             if (e.RowIndex >= 0)
             {
                 selectedFlight = (FlightModel)Table.Rows[e.RowIndex].DataBoundItem;
+            }
+        }
+
+        private void Table_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (Table.Columns[e.ColumnIndex].Name == "RevenueColumn")
+            {
+                if (Table.Rows[e.RowIndex].DataBoundItem is FlightModel flightModel)
+                {
+                    var revenue = (flightModel.NumberOfPassengers * flightModel.PassengerFee + flightModel.CrewNumber * flightModel.CrewFee) * (Constants.BaseSum + flightModel.ServicePercentage / Constants.MaxPercent);
+
+                    e.Value = revenue.ToString("C");
+                    e.FormattingApplied = true;
+                }
             }
         }
     }

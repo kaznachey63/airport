@@ -82,17 +82,11 @@ namespace AirportApp.Models
         public decimal ServicePercentage { get; set; }
 
         /// <summary>
-        /// Выручка
-        /// </summary>
-        [Display(Name = "Выручка")]
-        public decimal Revenue => (NumberOfPassengers * PassengerFee + CrewNumber * CrewFee) * (Constants.BaseSum + ServicePercentage / Constants.MaxPercent);
-
-        /// <summary>
         /// Клон модели
         /// </summary>
         public FlightModel Clone()
         {
-            return (FlightModel)this.MemberwiseClone();
+            return (FlightModel)MemberwiseClone();
         }
     }
 }

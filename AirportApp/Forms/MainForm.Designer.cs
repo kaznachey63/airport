@@ -163,6 +163,7 @@
             Table.Size = new Size(800, 385);
             Table.TabIndex = 3;
             Table.CellClick += Table_CellClick;
+            Table.CellFormatting += Table_CellFormatting;
             // 
             // FlightNumberColumn
             // 

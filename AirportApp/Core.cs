@@ -1,4 +1,5 @@
 ﻿using AirportApp.Forms;
+using AirportApp.Infostructure;
 using AirportApp.Models;
 
 namespace AirportApp
@@ -120,7 +121,14 @@ namespace AirportApp
             mainForm.NumberOfFlights.Text = $"Количество рейсов: {flights.Count}";
             mainForm.NumberOfPassengers.Text = $"Количество пассажиров: {flights.Sum(f => f.NumberOfPassengers)}";
             mainForm.CrewNumber.Text = $"Количество экипажа: {flights.Sum(c => c.CrewNumber)}";
-            mainForm.TotalRevenue.Text = $"Общая выручка: {flights.Sum(r => r.Revenue)}";
+
+            var totalRevenue = 0m;
+            foreach (var flight in flights)
+            {
+                var revenue = (flight.NumberOfPassengers * flight.PassengerFee + flight.CrewNumber * flight.CrewFee) * (Constants.BaseSum + flight.ServicePercentage / Constants.MaxPercent);
+                totalRevenue += revenue;
+            }
+            mainForm.TotalRevenue.Text = $"Общая выручка: {totalRevenue}";
         }
 
         private void SetTable()

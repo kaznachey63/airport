@@ -38,7 +38,7 @@
         /// <summary>
         /// Минимальный процент надбавки за обслуживание
         /// </summary>
-        public const int MinPercent = 0;
+        public const int MinPercent = 1;
 
         /// <summary>
         /// Минимальный номер рейса
