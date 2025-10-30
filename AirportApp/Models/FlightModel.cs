@@ -36,9 +36,6 @@ namespace AirportApp.Models
         /// <summary>
         /// Тип самолета
         /// </summary>
-        [Display(Name = "Тип самолета")]
-        [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinCombobx, Constants.MaxCombobx, ErrorMessage = "{0} - {1}")]
         public TypeOfAircraft TypeOfAircraft { get; set; }
 
         /// <summary>

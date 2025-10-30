@@ -139,11 +139,13 @@
             // 
             // ComboBox
             // 
+            ComboBox.DisplayMember = "-1";
             ComboBox.FormattingEnabled = true;
             ComboBox.Location = new Point(181, 102);
             ComboBox.Name = "ComboBox";
             ComboBox.Size = new Size(182, 33);
             ComboBox.TabIndex = 10;
+            ComboBox.ValueMember = "-1";
             // 
             // TimePicker
             // 
