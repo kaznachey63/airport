@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{E3C815D3-0779-416D-AD9B-ED3E7AC1E8AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constants", "Constants\Constants.csproj", "{ED09E311-3898-4926-A78A-1737CAE571CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "Constants\Constants.csproj", "{ED09E311-3898-4926-A78A-1737CAE571CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Contracts", "Services.Contracts\Services.Contracts.csproj", "{B368F847-0EEC-496E-922E-36D3BAF773CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ED09E311-3898-4926-A78A-1737CAE571CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED09E311-3898-4926-A78A-1737CAE571CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED09E311-3898-4926-A78A-1737CAE571CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B368F847-0EEC-496E-922E-36D3BAF773CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B368F847-0EEC-496E-922E-36D3BAF773CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B368F847-0EEC-496E-922E-36D3BAF773CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B368F847-0EEC-496E-922E-36D3BAF773CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
