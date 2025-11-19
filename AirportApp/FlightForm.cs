@@ -16,5 +16,15 @@ namespace AirportApp
         {
             InitializeComponent();
         }
+
+        private void FlightForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
