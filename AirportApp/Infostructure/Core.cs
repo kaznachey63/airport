@@ -1,9 +1,12 @@
 ﻿using AirportApp.Entities;
 using AirportApp.Services;
 using AirportApp.Services.Contracts;
+using System.ComponentModel;
+using System.Windows.Forms;
 
-namespace AirportApp
+namespace AirportApp.Infostructure
 {
+
     /// <summary>
     /// Ядро приложения
     /// </summary>
@@ -12,6 +15,7 @@ namespace AirportApp
         private readonly IFlightService flightService;
         private readonly BindingSource bindingSource = new();
         private readonly MainForm mainForm;
+        private BindingList<FlightModel> flights = new(); // Ключевое изменение!
 
         public Core(MainForm MainForm)
         {
@@ -25,8 +29,9 @@ namespace AirportApp
         /// </summary>
         public BindingSource LoadData()
         {
-            var flights = flightService.GetAll().Result; 
-            bindingSource.DataSource = flights.ToList();
+            var flights = flightService.GetAll().Result;
+            flights = new BindingList<FlightModel>(flights.ToList());
+            bindingSource.DataSource = flights;
             SetStatistics();
             return bindingSource;
         }
@@ -40,28 +45,26 @@ namespace AirportApp
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 flightService.Add(addForm.CurrentFlight).Wait();
-                SetTable();
+                LoadData();
             }
         }
 
         /// <summary>
         /// Обработчик кнопки изменить
         /// </summary>
-        /// <param name="flight">Выбранный рейс</param>
         public void EditButtonHandler(FlightModel flight)
         {
-            using var editForm = new FlightForm(flight);
+            using var editForm = new FlightForm(flight.Clone());
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 flightService.Update(editForm.CurrentFlight).Wait();
-                SetTable();
+                LoadData();
             }
         }
 
         /// <summary>
         /// Обработчик кнопки удалить
         /// </summary>
-        /// <param name="flight">Выбранный рейс</param>
         public void DeleteButtonHandler(FlightModel flight)
         {
             var confirm = MessageBox.Show(
@@ -74,7 +77,7 @@ namespace AirportApp
             if (confirm == DialogResult.Yes)
             {
                 flightService.Remove(flight).Wait();
-                SetTable();
+                LoadData();
             }
         }
 
@@ -87,12 +90,6 @@ namespace AirportApp
             mainForm.NumberOfPassengers.Text = $"Количество пассажиров: {statistics.Passengers}";
             mainForm.CrewNumber.Text = $"Количество экипажа: {statistics.Crew}";
             mainForm.TotalRevenue.Text = $"Общая выручка: {statistics.Revenue:C}";
-        }
-
-        private void SetTable()
-        {
-            bindingSource.ResetBindings(false);
-            SetStatistics();
         }
     }
 }
