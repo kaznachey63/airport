@@ -81,12 +81,12 @@ namespace AirportApp
         // -------------- private ----------------------------
         private void SetStatistics()
         {
-            var stats = flightService.GetStatistics().Result;
+            var statistics = flightService.GetStatistics().Result;
 
-            mainForm.NumberOfFlights.Text = $"Количество рейсов: {stats.Flights}";
-            mainForm.NumberOfPassengers.Text = $"Количество пассажиров: {stats.Passengers}";
-            mainForm.CrewNumber.Text = $"Количество экипажа: {stats.Crew}";
-            mainForm.TotalRevenue.Text = $"Общая выручка: {stats.Revenue:C}";
+            mainForm.NumberOfFlights.Text = $"Количество рейсов: {statistics.Flights}";
+            mainForm.NumberOfPassengers.Text = $"Количество пассажиров: {statistics.Passengers}";
+            mainForm.CrewNumber.Text = $"Количество экипажа: {statistics.Crew}";
+            mainForm.TotalRevenue.Text = $"Общая выручка: {statistics.Revenue:C}";
         }
 
         private void SetTable()
