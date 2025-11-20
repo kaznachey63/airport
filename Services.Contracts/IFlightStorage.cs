@@ -2,13 +2,11 @@
 
 namespace AirportApp.Services.Contracts
 {
-    public interface IFlightService
+    public interface IFlightStorage
     {
         Task Add(FlightModel flight);
         Task Remove(FlightModel flight);
         Task Update(FlightModel flight);
         Task<ICollection<FlightModel>> GetAll();
-
-        Task<(int Flights, int Passengers, int Crew, decimal Revenue)> GetStatistics();
     }
 }
