@@ -3,6 +3,9 @@ using AirportApp.Infostructure;
 
 namespace AirportApp
 {
+    /// <summary>
+    /// Главная форма
+    /// </summary>
     public partial class MainForm : Form
     {
         private readonly Core core;

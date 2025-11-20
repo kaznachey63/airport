@@ -29,18 +29,21 @@ namespace AirportApp.Services
             };
         }
 
+        /// <inheritdoc/>
         public Task Add(FlightModel flight)
         {
             flights.Add(flight);
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public Task Remove(FlightModel flight)
         {
             flights.Remove(flight);
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public Task Update(FlightModel flight)
         {
             var index = flights.FindIndex(f => f.Id == flight.Id);
@@ -51,6 +54,7 @@ namespace AirportApp.Services
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public Task<ICollection<FlightModel>> GetAll()
         {
             return Task.FromResult<ICollection<FlightModel>>(flights);

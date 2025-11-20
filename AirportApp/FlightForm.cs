@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AirportApp
 {
+    /// <summary>
+    /// Форма редактирвоания
+    /// </summary>
     public partial class FlightForm : Form
     {
         private FlightModel targetFlight = null!;
@@ -12,7 +15,6 @@ namespace AirportApp
         /// Выбранный рейс
         /// </summary>
         public FlightModel CurrentFlight => targetFlight;
-
 
         public FlightForm(FlightModel? sourceFlight = null)
         {

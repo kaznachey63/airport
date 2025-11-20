@@ -2,11 +2,9 @@
 using AirportApp.Services;
 using AirportApp.Services.Contracts;
 using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace AirportApp.Infostructure
 {
-
     /// <summary>
     /// Ядро приложения
     /// </summary>

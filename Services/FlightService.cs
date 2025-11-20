@@ -18,26 +18,31 @@ namespace AirportApp.Services
             storage = ifstorage;
         }
 
+        /// <inheritdoc/>
         public async Task Add(FlightModel flight)
         {
             await storage.Add(flight);
         }
 
+        /// <inheritdoc/>
         public async Task Remove(FlightModel flight)
         {
             await storage.Remove(flight);
         }
 
+        /// <inheritdoc/>
         public async Task Update(FlightModel flight)
         {
             await storage.Update(flight);
         }
 
+        /// <inheritdoc/>
         public async Task<ICollection<FlightModel>> GetAll()
         {
             return await storage.GetAll();
         }
-
+        
+        /// <inheritdoc/>
         public async Task<(int Flights, int Passengers, int Crew, decimal Revenue)> GetStatistics()
         {
             var flights = await storage.GetAll();
