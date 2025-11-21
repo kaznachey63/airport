@@ -1,7 +1,7 @@
 ﻿using AirportApp.Entities;
 using AirportApp.Infostructure;
 using System.ComponentModel.DataAnnotations;
-
+using AirportApp.Constants;
 namespace AirportApp
 {
     /// <summary>

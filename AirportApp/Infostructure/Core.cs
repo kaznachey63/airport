@@ -8,7 +8,7 @@ namespace AirportApp.Infostructure
     /// <summary>
     /// Ядро приложения
     /// </summary>
-    internal class Core
+    public class Core
     {
         private readonly IFlightService flightService;
         private readonly BindingSource bindingSource = new();
