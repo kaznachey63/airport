@@ -1,4 +1,7 @@
-﻿namespace AirportApp.Forms
+﻿using AirportApp.Infostructure;
+using AirportApp.Entities;
+
+namespace AirportApp.Forms
 {
     /// <summary>
     /// Главаная форма
@@ -51,17 +54,12 @@
             {
                 if (Table.Rows[e.RowIndex].DataBoundItem is FlightModel flightModel)
                 {
-                    var revenue = (flightModel.NumberOfPassengers * flightModel.PassengerFee + flightModel.CrewNumber * flightModel.CrewFee) * (Constants.BaseSum + flightModel.ServicePercentage / Constants.MaxPercent);
+                    var revenue = (flightModel.NumberOfPassengers * flightModel.PassengerFee + flightModel.CrewNumber * flightModel.CrewFee) * (Constants.Constants.BaseSum + flightModel.ServicePercentage / Constants.Constants.MaxPercent);
 
                     e.Value = revenue.ToString("C");
                     e.FormattingApplied = true;
                 }
             }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
