@@ -1,5 +1,4 @@
-﻿using AirportApp.Constants;
-using AirportApp.Entities;
+﻿using AirportApp.Entities;
 using AirportApp.Services.Contracts;
 
 namespace AirportApp.Services

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AirportApp.Constants;
 
 namespace AirportApp.Entities
 {

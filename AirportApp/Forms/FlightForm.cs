@@ -1,18 +1,11 @@
 ﻿using AirportApp.Infostructure;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using AirportApp.Infostructure;
 
 namespace AirportApp.Forms
 {
+    /// <summary>
+    /// Фрма редактирования рейса
+    /// </summary>
     public partial class FlightForm : Form
     {
         private FlightModel targetFlight = null!;
