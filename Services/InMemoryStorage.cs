@@ -30,21 +30,21 @@ namespace AirportApp.Services
         }
 
         /// <inheritdoc/>
-        public Task Add(FlightModel flight)
+        public Task Add(FlightModel flight, CancellationToken cancellationToken = default)
         {
             flights.Add(flight);
             return Task.CompletedTask;
         }
 
         /// <inheritdoc/>
-        public Task Remove(FlightModel flight)
+        public Task Remove(FlightModel flight, CancellationToken cancellationToken = default)
         {
             flights.Remove(flight);
             return Task.CompletedTask;
         }
 
         /// <inheritdoc/>
-        public Task Update(FlightModel flight)
+        public Task Update(FlightModel flight, CancellationToken cancellationToken = default)
         {
             var index = flights.FindIndex(f => f.Id == flight.Id);
             if (index >= 0)
@@ -55,7 +55,7 @@ namespace AirportApp.Services
         }
 
         /// <inheritdoc/>
-        public Task<ICollection<FlightModel>> GetAll()
+        public Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default)
         {
             return Task.FromResult<ICollection<FlightModel>>(flights);
         }

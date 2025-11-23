@@ -2,7 +2,6 @@
 
 namespace AirportApp.Services.Contracts
 {
-
     /// <summary>
     /// Хранилище рейсов для операций CRUD
     /// </summary>
@@ -11,21 +10,21 @@ namespace AirportApp.Services.Contracts
         /// <summary>
         /// Добавить новый рейс
         /// </summary>
-        Task Add(FlightModel flight);
+        Task Add(FlightModel flight, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Удалить существующий рейс
         /// </summary>
-        Task Remove(FlightModel flight);
+        Task Remove(FlightModel flight, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Обновить данные рейса
         /// </summary>
-        Task Update(FlightModel flight);
+        Task Update(FlightModel flight, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить все рейсы
         /// </summary>
-        Task<ICollection<FlightModel>> GetAll();
+        Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default);
     }
 }

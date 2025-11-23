@@ -19,33 +19,33 @@ namespace AirportApp.Services
         }
 
         /// <inheritdoc/>
-        public async Task Add(FlightModel flight)
+        public async Task Add(FlightModel flight, CancellationToken cancellationToken = default)
         {
-            await storage.Add(flight);
+            await storage.Add(flight, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public async Task Remove(FlightModel flight)
+        public async Task Remove(FlightModel flight, CancellationToken cancellationToken = default)
         {
-            await storage.Remove(flight);
+            await storage.Remove(flight, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public async Task Update(FlightModel flight)
+        public async Task Update(FlightModel flight, CancellationToken cancellationToken = default)
         {
-            await storage.Update(flight);
+            await storage.Update(flight, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public async Task<ICollection<FlightModel>> GetAll()
+        public async Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default)
         {
-            return await storage.GetAll();
+            return await storage.GetAll(cancellationToken);
         }
-        
+
         /// <inheritdoc/>
-        public async Task<(int Flights, int Passengers, int Crew, decimal Revenue)> GetStatistics()
+        public async Task<(int Flights, int Passengers, int Crew, decimal Revenue)> GetStatistics(CancellationToken cancellationToken = default)
         {
-            var flights = await storage.GetAll();
+            var flights = await storage.GetAll(cancellationToken);
 
             var totalFlights = flights.Count;
             var totalPassengers = flights.Sum(f => f.NumberOfPassengers);
