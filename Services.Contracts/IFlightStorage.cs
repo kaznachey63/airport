@@ -1,4 +1,6 @@
-﻿namespace AirportApp.Services.Contracts
+﻿using AirportApp.Entities;
+
+namespace AirportApp.Services.Contracts
 {
 
     /// <summary>
