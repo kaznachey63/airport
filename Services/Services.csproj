@@ -8,7 +8,7 @@
     <Authors>Казначеев Илья</Authors>
     <PackageTags>airport;flight;data;inmemory;storage</PackageTags>
     <Product>AirportApp Data Storage</Product>
-    <PackageId>Kaznachey.Airport.Services2</PackageId>
+    <PackageId>Kaznachey.Airport.Services3</PackageId>
     <Title>Аэропорт</Title>
     <Company>Казначеев Илья</Company>
     <Description>In-memory implementation of flight data storage for AirportApp.
@@ -18,19 +18,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\Downloads\icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Constants\Constants.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
