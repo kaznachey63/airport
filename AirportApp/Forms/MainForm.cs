@@ -1,4 +1,4 @@
-﻿using AirportApp.Infostructure;
+﻿using AirportApp.Infrastructure;
 using AirportApp.Entities;
 
 namespace AirportApp.Forms

@@ -1,4 +1,4 @@
-﻿using AirportApp.Infostructure;
+﻿using AirportApp.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 using AirportApp.Entities;
 

@@ -4,7 +4,7 @@ using AirportApp.Entities;
 using AirportApp.Services;
 using AirportApp.Services.Contracts;
 
-namespace AirportApp.Infostructure
+namespace AirportApp.Infrastructure
 {
     /// <summary>
     /// Ядро приложения
@@ -14,7 +14,7 @@ namespace AirportApp.Infostructure
         private readonly IFlightService flightService;
         private readonly BindingSource bindingSource = new();
         private readonly MainForm mainForm;
-        private BindingList<FlightModel> flights = new(); // Ключевое изменение!
+        private BindingList<FlightModel> flights = new();
 
         public Core(MainForm MainForm)
         {
