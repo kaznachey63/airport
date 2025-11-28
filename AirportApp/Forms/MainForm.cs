@@ -22,6 +22,28 @@ namespace AirportApp.Forms
             flightService = new FlightService(new InMemoryFlightStorage());
         }
 
+        private async void MainForm_Load(object sender, EventArgs e)
+        {
+            var allFlights = await flightService.GetAll();
+            if (!allFlights.Any())
+            {
+                await flightService.Add(new FlightModel
+                {
+                    Id = Guid.NewGuid(),
+                    FlightNumber = 504,
+                    TypeOfAircraft = TypeOfAircraft.Boieng,
+                    ArrivalTime = DateTime.Now,
+                    NumberOfPassengers = 100,
+                    PassengerFee = 12000m,
+                    CrewNumber = 5,
+                    CrewFee = 2000m,
+                    ServicePercentage = 5m
+                });
+            }
+
+            await LoadData();
+        }
+
         private async void AddButton_Click(object sender, EventArgs e)
         {
             using var addForm = new FlightForm();

@@ -8,26 +8,7 @@ namespace AirportApp.Services
     /// </summary>
     public class InMemoryFlightStorage : IFlightStorage
     {
-        private readonly List<FlightModel> flights;
-
-        public InMemoryFlightStorage()
-        {
-            flights = new List<FlightModel>
-            {
-                new FlightModel
-                {
-                    Id = Guid.NewGuid(),
-                    FlightNumber = 504,
-                    TypeOfAircraft = TypeOfAircraft.Boieng,
-                    ArrivalTime = DateTime.Now,
-                    NumberOfPassengers = 100,
-                    PassengerFee = 12000m,
-                    CrewNumber = 5,
-                    CrewFee = 2000m,
-                    ServicePercentage = 5m
-                }
-            };
-        }
+        private readonly List<FlightModel> flights = default!;
 
         /// <inheritdoc/>
         public Task Add(FlightModel flight, CancellationToken cancellationToken = default)

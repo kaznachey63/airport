@@ -248,6 +248,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Аэропорт";
+            Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)Table).EndInit();
             StatusStrip.ResumeLayout(false);
             StatusStrip.PerformLayout();
