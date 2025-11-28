@@ -19,8 +19,8 @@ namespace AirportApp.Forms
         {
             InitializeComponent();
             Table.AutoGenerateColumns = false;
-            Table.DataSource = LoadData();
             flightService = new FlightService(new InMemoryFlightStorage());
+            Table.DataSource = LoadData();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
