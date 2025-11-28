@@ -14,9 +14,9 @@ namespace AirportApp.Services
         /// <summary>
         /// Инициализировать новый экземпляр <see cref="FlightService"/>
         /// </summary>
-        public FlightService(IFlightStorage ifstorage)
+        public FlightService(IFlightStorage flightStorage)
         {
-            storage = ifstorage;
+            storage = flightStorage;
         }
 
         /// <inheritdoc/>
