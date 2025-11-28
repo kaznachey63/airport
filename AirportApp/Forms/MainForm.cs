@@ -25,8 +25,7 @@ namespace AirportApp.Forms
         private async void MainForm_Load(object sender, EventArgs e)
         {
             var allFlights = await flightService.GetAll();
-            if (!allFlights.Any())
-            {
+
                 await flightService.Add(new FlightModel
                 {
                     Id = Guid.NewGuid(),
@@ -39,7 +38,7 @@ namespace AirportApp.Forms
                     CrewFee = 2000m,
                     ServicePercentage = 5m
                 });
-            }
+            
 
             await LoadData();
         }

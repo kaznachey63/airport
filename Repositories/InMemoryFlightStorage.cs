@@ -8,7 +8,7 @@ namespace AirportApp.Services
     /// </summary>
     public class InMemoryFlightStorage : IFlightStorage
     {
-        private readonly List<FlightModel> flights = default!;
+        private readonly List<FlightModel> flights = new();
 
         /// <inheritdoc/>
         public Task Add(FlightModel flight, CancellationToken cancellationToken = default)
@@ -19,7 +19,7 @@ namespace AirportApp.Services
 
         /// <inheritdoc/>
         public Task Remove(FlightModel flight, CancellationToken cancellationToken = default)
-        {
+        {   
             flights.Remove(flight);
             return Task.CompletedTask;
         }
