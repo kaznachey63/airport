@@ -20,20 +20,19 @@ namespace AirportApp.Forms
             InitializeComponent();
             Table.AutoGenerateColumns = false;
             flightService = new FlightService(new InMemoryFlightStorage());
-            Table.DataSource = LoadData();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private async void AddButton_Click(object sender, EventArgs e)
         {
             using var addForm = new FlightForm();
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 flightService.Add(addForm.CurrentFlight).Wait();
-                LoadData();
+                await LoadData();
             }
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        private async void EditButton_Click(object sender, EventArgs e)
         {
             if (selectedFlight == null)
                 return;
@@ -42,11 +41,11 @@ namespace AirportApp.Forms
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 flightService.Update(editForm.CurrentFlight).Wait();
-                LoadData();
+                await LoadData();
             }
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private async void DeleteButton_Click(object sender, EventArgs e)
         {
             if (selectedFlight == null)
                 return;
@@ -61,7 +60,7 @@ namespace AirportApp.Forms
             if (confirm == DialogResult.Yes)
             {
                 flightService.Remove(selectedFlight).Wait();
-                LoadData();
+                await LoadData();
             }
         }
 
@@ -87,23 +86,20 @@ namespace AirportApp.Forms
             }
         }
 
-        private BindingSource LoadData()
+        private async Task LoadData()
         {
-            var flights = flightService.GetAll().Result;
-            flights = new BindingList<FlightModel>(flights.ToList());
-            bindingSource.DataSource = flights;
-            SetStatistics();
-            return bindingSource;
-        }
+            var flights = await flightService.GetAll();
+            var bindingList = new BindingList<FlightModel>(flights.ToList());
+            bindingSource.DataSource = bindingList;
 
-        private void SetStatistics()
-        {
-            var statistics = flightService.GetStatistics().Result;
+            var statistics = await flightService.GetStatistics();
 
             NumberOfFlights.Text = $"Количество рейсов: {statistics.Flights}";
             NumberOfPassengers.Text = $"Количество пассажиров: {statistics.Passengers}";
             CrewNumber.Text = $"Количество экипажа: {statistics.Crew}";
             TotalRevenue.Text = $"Общая выручка: {statistics.Revenue:C}";
+
+            Table.DataSource = bindingSource;
         }
     }
 }
