@@ -9,13 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Kaznachey.Airport.Services3" Version="1.0.0" />
+    <PackageReference Include="Kaznachey.Airport.Services3" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Constants\Constants.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
     <ProjectReference Include="..\Repositories.Contracts\Repositories.Contracts.csproj" />
+    <ProjectReference Include="..\Repositories\Repositories.csproj" />
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
   </ItemGroup>
 
