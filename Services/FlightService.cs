@@ -44,23 +44,9 @@ namespace AirportApp.Services
         }
 
         /// <inheritdoc/>
-        public async Task<(int Flights, int Passengers, int Crew, decimal Revenue)> GetStatistics(CancellationToken cancellationToken = default)
+        public async Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default)
         {
-            var flights = await storage.GetAll(cancellationToken);
-
-            var totalFlights = flights.Count;
-            var totalPassengers = flights.Sum(f => f.NumberOfPassengers);
-            var totalCrew = flights.Sum(f => f.CrewNumber);
-
-            decimal totalRevenue = 0m;
-            foreach (var flight in flights)
-            {
-                var baseRevenue = flight.NumberOfPassengers * flight.PassengerFee + flight.CrewNumber * flight.CrewFee;
-                var serviceFee = baseRevenue * (flight.ServicePercentage / Constants.Constants.MaxPercent);
-                totalRevenue += baseRevenue + serviceFee;
-            }
-
-            return (totalFlights, totalPassengers, totalCrew, totalRevenue);
+            return await storage.GetStatistics(cancellationToken);
         }
     }
 }

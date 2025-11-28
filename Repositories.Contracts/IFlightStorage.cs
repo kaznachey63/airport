@@ -26,5 +26,10 @@ namespace AirportApp.Repositories.Contracts
         /// Получить все рейсы
         /// </summary>
         Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Получить статистику
+        /// </summary>
+        Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default);
     }
 }

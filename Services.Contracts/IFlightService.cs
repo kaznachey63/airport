@@ -22,6 +22,6 @@ namespace AirportApp.Services.Contracts
         /// <summary>
         /// Рассчитать статистику по рейсам
         /// </summary>
-        Task<(int Flights, int Passengers, int Crew, decimal Revenue)> GetStatistics(CancellationToken cancellationToken = default);
+        Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default);
     }
 }

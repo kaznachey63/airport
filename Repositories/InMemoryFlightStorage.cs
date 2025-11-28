@@ -59,5 +59,25 @@ namespace AirportApp.Services
         {
             return Task.FromResult<ICollection<FlightModel>>(flights);
         }
+
+        /// <inheritdoc/>
+        public Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default)
+        {
+            var totalFlights = flights.Count;
+            var totalPassengers = flights.Sum(f => f.NumberOfPassengers);
+            var totalCrew = flights.Sum(f => f.CrewNumber);
+
+            decimal totalRevenue = 0m;
+            foreach (var flight in flights)
+            {
+                var baseRevenue = flight.NumberOfPassengers * flight.PassengerFee
+                                + flight.CrewNumber * flight.CrewFee;
+                var serviceFee = baseRevenue * (flight.ServicePercentage / Constants.Constants.MaxPercent);
+                totalRevenue += baseRevenue + serviceFee;
+            }
+
+            var statistics = new FlightStatistics(totalFlights, totalPassengers, totalCrew, totalRevenue);
+            return Task.FromResult(statistics);
+        }
     }
 }
