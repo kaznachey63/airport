@@ -1,5 +1,7 @@
-﻿using AirportApp.Infrastructure;
-using AirportApp.Entities;
+﻿using AirportApp.Entities;
+using AirportApp.Services;
+using AirportApp.Services.Contracts;
+using System.ComponentModel;
 
 namespace AirportApp.Forms
 {
@@ -8,20 +10,27 @@ namespace AirportApp.Forms
     /// </summary>
     public partial class MainForm : Form
     {
-        private readonly Core core;
         private FlightModel? selectedFlight;
+        private readonly IFlightService flightService;
+        private readonly BindingSource bindingSource = new();
+        private BindingList<FlightModel> flights = new();
 
         public MainForm()
         {
             InitializeComponent();
-            core = new(this);
             Table.AutoGenerateColumns = false;
-            Table.DataSource = core.LoadData();
+            Table.DataSource = LoadData();
+            flightService = new FlightService(new InMemoryFlightStorage());
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            core.AddButtonHandler();
+            using var addForm = new FlightForm();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                flightService.Add(addForm.CurrentFlight).Wait();
+                LoadData();
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -29,7 +38,12 @@ namespace AirportApp.Forms
             if (selectedFlight == null)
                 return;
 
-            core.EditButtonHandler(selectedFlight);
+            using var editForm = new FlightForm(selectedFlight.Clone());
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                flightService.Update(editForm.CurrentFlight).Wait();
+                LoadData();
+            }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -37,7 +51,18 @@ namespace AirportApp.Forms
             if (selectedFlight == null)
                 return;
 
-            core.DeleteButtonHandler(selectedFlight);
+            var confirm = MessageBox.Show(
+                $"Точно удалить рейс №{selectedFlight.FlightNumber}?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                flightService.Remove(selectedFlight).Wait();
+                LoadData();
+            }
         }
 
         private void Table_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -60,6 +85,25 @@ namespace AirportApp.Forms
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private BindingSource LoadData()
+        {
+            var flights = flightService.GetAll().Result;
+            flights = new BindingList<FlightModel>(flights.ToList());
+            bindingSource.DataSource = flights;
+            SetStatistics();
+            return bindingSource;
+        }
+
+        private void SetStatistics()
+        {
+            var statistics = flightService.GetStatistics().Result;
+
+            NumberOfFlights.Text = $"Количество рейсов: {statistics.Flights}";
+            NumberOfPassengers.Text = $"Количество пассажиров: {statistics.Passengers}";
+            CrewNumber.Text = $"Количество экипажа: {statistics.Crew}";
+            TotalRevenue.Text = $"Общая выручка: {statistics.Revenue:C}";
         }
     }
 }
