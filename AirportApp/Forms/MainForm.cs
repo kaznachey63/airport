@@ -1,5 +1,4 @@
 ﻿using AirportApp.Entities;
-using AirportApp.Services;
 using AirportApp.Services.Contracts;
 using System.ComponentModel;
 
@@ -13,13 +12,12 @@ namespace AirportApp.Forms
         private FlightModel? selectedFlight;
         private readonly IFlightService flightService;
         private readonly BindingSource bindingSource = new();
-        private BindingList<FlightModel> flights = new();
 
-        public MainForm()
+        public MainForm(IFlightService FlightService)
         {
             InitializeComponent();
             Table.AutoGenerateColumns = false;
-            flightService = new FlightService(new InMemoryFlightStorage());
+            flightService = FlightService;
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -49,7 +47,7 @@ namespace AirportApp.Forms
             using var addForm = new FlightForm();
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                flightService.Add(addForm.CurrentFlight).Wait();
+                await flightService.Add(addForm.CurrentFlight);
                 await LoadData();
             }
         }
@@ -62,7 +60,7 @@ namespace AirportApp.Forms
             using var editForm = new FlightForm(selectedFlight.Clone());
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                flightService.Update(editForm.CurrentFlight).Wait();
+                await flightService.Update(editForm.CurrentFlight);
                 await LoadData();
             }
         }
@@ -81,7 +79,7 @@ namespace AirportApp.Forms
 
             if (confirm == DialogResult.Yes)
             {
-                flightService.Remove(selectedFlight).Wait();
+                await flightService.Remove(selectedFlight);
                 await LoadData();
             }
         }
