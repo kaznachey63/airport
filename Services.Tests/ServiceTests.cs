@@ -23,10 +23,10 @@ namespace AirportApp.Services.Tests
         }
 
         /// <summary>
-        /// Проверяет, что при добавлении рейса сервис вызывает метод Add хранилища.
+        /// Add работает
         /// </summary>
         [Fact]
-        public async Task AddShouldCallStorageAdd()
+        public async Task AddShouldWork()
         {
             // Arrange
             var flight = new FlightModel();
@@ -39,10 +39,10 @@ namespace AirportApp.Services.Tests
         }
 
         /// <summary>
-        /// Проверяет, что при удалении рейса сервис вызывает метод Remove хранилища.
+        /// Remove работает
         /// </summary>
         [Fact]
-        public async Task RemoveShouldCallStorageRemove()
+        public async Task RemoveShouldWork()
         {
             // Arrange
             var flight = new FlightModel();
@@ -55,10 +55,10 @@ namespace AirportApp.Services.Tests
         }
 
         /// <summary>
-        /// Проверяет, что при обновлении рейса сервис вызывает метод Update хранилища.
+        /// Update работает
         /// </summary>
         [Fact]
-        public async Task UpdateShouldCallStorageUpdate()
+        public async Task UpdateShouldWork()
         {
             // Arrange
             var flight = new FlightModel();
@@ -71,10 +71,10 @@ namespace AirportApp.Services.Tests
         }
 
         /// <summary>
-        /// Проверяет, что сервис возвращает все рейсы из хранилища.
+        /// GetAll возвращает значение
         /// </summary>
         [Fact]
-        public async Task GetAllShouldReturnDataFromStorage()
+        public async Task GetAllShouldReturnValue()
         {
             // Arrange
             var flights = new List<FlightModel>
@@ -95,10 +95,10 @@ namespace AirportApp.Services.Tests
         }
 
         /// <summary>
-        /// Проверяет, что сервис возвращает корректную статистику рейсов.
+        /// GetStatistics возвращает значение
         /// </summary>
         [Fact]
-        public async Task GetStatisticsShouldReturnDataFromStorage()
+        public async Task GetStatisticsShouldReturnValue()
         {
             // Arrange
             var expected = new FlightStatistics(10, 1500, 120, 3000000m);
@@ -114,10 +114,10 @@ namespace AirportApp.Services.Tests
         }
 
         /// <summary>
-        /// Проверяет, что сервис корректно обрабатывает пустую коллекцию рейсов.
+        /// GetAll возвращает пустую коллекцию
         /// </summary>
         [Fact]
-        public async Task GetAllShouldReturnEmptyCollectionWhenStorageIsEmpty()
+        public async Task GetAllShouldReturnEmptyCollection()
         {
             // Arrange
             storageMock
