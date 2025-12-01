@@ -1,40 +1,87 @@
-﻿using AirportApp.Infostructure;
-using AirportApp.Models;
-    
-namespace AirportApp
+﻿using AirportApp.Entities;
+using AirportApp.Services.Contracts;
+using System.ComponentModel;
+
+namespace AirportApp.Forms
 {
+    /// <summary>
+    /// Главаная форма
+    /// </summary>
     public partial class MainForm : Form
     {
-        private readonly Core core;
         private FlightModel? selectedFlight;
+        private readonly IFlightService flightService;
+        private readonly BindingSource bindingSource = new();
 
-        public MainForm()
+        public MainForm(IFlightService FlightService)
         {
             InitializeComponent();
-            core = new(this);
             Table.AutoGenerateColumns = false;
-            Table.DataSource = core.LoadData();
+            flightService = FlightService;
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
-            core.AddButtonHandler();
+            var allFlights = await flightService.GetAll();
+            if (!allFlights.Any())
+            {
+                await flightService.Add(new FlightModel
+                {
+                    Id = Guid.NewGuid(),
+                    FlightNumber = 504,
+                    TypeOfAircraft = TypeOfAircraft.Boieng,
+                    ArrivalTime = DateTime.Now,
+                    NumberOfPassengers = 100,
+                    PassengerFee = 12000m,
+                    CrewNumber = 5,
+                    CrewFee = 2000m,
+                    ServicePercentage = 5m
+                });
+            }
+
+            await LoadData();
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        private async void AddButton_Click(object sender, EventArgs e)
+        {
+            using var addForm = new FlightForm();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                await flightService.Add(addForm.CurrentFlight);
+                await LoadData();
+            }
+        }
+
+        private async void EditButton_Click(object sender, EventArgs e)
         {
             if (selectedFlight == null)
                 return;
 
-            core.EditButtonHandler(selectedFlight);
+            using var editForm = new FlightForm(selectedFlight.Clone());
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                await flightService.Update(editForm.CurrentFlight);
+                await LoadData();
+            }
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private async void DeleteButton_Click(object sender, EventArgs e)
         {
             if (selectedFlight == null)
                 return;
 
-            core.DeleteButtonHandler(selectedFlight);
+            var confirm = MessageBox.Show(
+                $"Точно удалить рейс №{selectedFlight.FlightNumber}?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                await flightService.Remove(selectedFlight);
+                await LoadData();
+            }
         }
 
         private void Table_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -51,12 +98,28 @@ namespace AirportApp
             {
                 if (Table.Rows[e.RowIndex].DataBoundItem is FlightModel flightModel)
                 {
-                    var revenue = (flightModel.NumberOfPassengers * flightModel.PassengerFee + flightModel.CrewNumber * flightModel.CrewFee) * (Constants.BaseSum + flightModel.ServicePercentage / Constants.MaxPercent);
+                    var revenue = (flightModel.NumberOfPassengers * flightModel.PassengerFee + flightModel.CrewNumber * flightModel.CrewFee) * (Constants.Constants.BaseSum + flightModel.ServicePercentage / Constants.Constants.MaxPercent);
 
                     e.Value = revenue.ToString("C");
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private async Task LoadData()
+        {
+            var flights = await flightService.GetAll();
+            var bindingList = new BindingList<FlightModel>(flights.ToList());
+            bindingSource.DataSource = bindingList;
+
+            var statistics = await flightService.GetStatistics();
+
+            NumberOfFlights.Text = $"Количество рейсов: {statistics.Flights}";
+            NumberOfPassengers.Text = $"Количество пассажиров: {statistics.Passengers}";
+            CrewNumber.Text = $"Количество экипажа: {statistics.Crew}";
+            TotalRevenue.Text = $"Общая выручка: {statistics.Revenue:C}";
+
+            Table.DataSource = bindingSource;
         }
     }
 }

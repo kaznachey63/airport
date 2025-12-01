@@ -1,9 +1,12 @@
-﻿using AirportApp.Infostructure;
-using AirportApp.Models;
+﻿using AirportApp.Infrastructure;
 using System.ComponentModel.DataAnnotations;
+using AirportApp.Entities;
 
 namespace AirportApp.Forms
 {
+    /// <summary>
+    /// Фрма редактирования рейса
+    /// </summary>
     public partial class FlightForm : Form
     {
         private FlightModel targetFlight = null!;

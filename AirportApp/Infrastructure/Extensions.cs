@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 
-namespace AirportApp.Infostructure
+namespace AirportApp.Infrastructure
 {
+    /// <summary>
+    /// Методы расширения для типобезопасной привязки данных в Windows Forms с поддержкой валидации
+    /// </summary>
     public static class Extensions
     {
         /// <summary>

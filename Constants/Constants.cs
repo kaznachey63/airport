@@ -1,4 +1,4 @@
-﻿namespace AirportApp.Infostructure
+﻿namespace AirportApp.Constants
 {
     /// <summary>
     /// Константы, используемые для валидации и расчетов в приложении
@@ -53,12 +53,12 @@
         /// <summary>
         /// Минимальная плата за пассажира
         /// </summary>
-        public const double MinPassangerFee = 1;
+        public const double MinPassengerFee = 1;
 
         /// <summary>
         /// Максимальная плата за пассажира
         /// </summary>
-        public const double MaxPassangerFee = 20000.0; // исправил, чтобы имело смысл
+        public const double MaxPassengerFee = 20000.0; // исправил, чтобы имело смысл
 
         /// <summary>
         /// Минимальная плата за члена экипажа

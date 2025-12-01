@@ -1,4 +1,4 @@
-﻿namespace AirportApp
+﻿namespace AirportApp.Forms
 {
     partial class MainForm
     {
@@ -29,119 +29,95 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            ToolStrip = new ToolStrip();
-            AddButton = new ToolStripButton();
-            toolStripSeparator1 = new ToolStripSeparator();
-            EditButton = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
-            DeleteButton = new ToolStripButton();
-            StatusStrip = new StatusStrip();
-            NumberOfFlights = new ToolStripStatusLabel();
-            NumberOfPassengers = new ToolStripStatusLabel();
-            CrewNumber = new ToolStripStatusLabel();
-            TotalRevenue = new ToolStripStatusLabel();
-            Table = new DataGridView();
-            FlightNumberColumn = new DataGridViewTextBoxColumn();
-            TypeOFAircraftColumn = new DataGridViewTextBoxColumn();
-            ArrivalTimeColumn = new DataGridViewTextBoxColumn();
-            NumberOFPassengersColumn = new DataGridViewTextBoxColumn();
-            PassengerFeeColumn = new DataGridViewTextBoxColumn();
-            CrewNumberColumn = new DataGridViewTextBoxColumn();
-            CrewFeeColumn = new DataGridViewTextBoxColumn();
-            ServicePercentageColumn = new DataGridViewTextBoxColumn();
             RevenueColumn = new DataGridViewTextBoxColumn();
-            ToolStrip.SuspendLayout();
-            StatusStrip.SuspendLayout();
+            CrewFeeColumn = new DataGridViewTextBoxColumn();
+            CrewNumberColumn = new DataGridViewTextBoxColumn();
+            PassengerFeeColumn = new DataGridViewTextBoxColumn();
+            NumberOFPassengersColumn = new DataGridViewTextBoxColumn();
+            ArrivalTimeColumn = new DataGridViewTextBoxColumn();
+            TypeOFAircraftColumn = new DataGridViewTextBoxColumn();
+            FlightNumberColumn = new DataGridViewTextBoxColumn();
+            Table = new DataGridView();
+            ServicePercentageColumn = new DataGridViewTextBoxColumn();
+            TotalRevenue = new ToolStripStatusLabel();
+            NumberOfPassengers = new ToolStripStatusLabel();
+            NumberOfFlights = new ToolStripStatusLabel();
+            StatusStrip = new StatusStrip();
+            CrewNumber = new ToolStripStatusLabel();
+            DeleteButton = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
+            EditButton = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            AddButton = new ToolStripButton();
+            ToolStrip = new ToolStrip();
             ((System.ComponentModel.ISupportInitialize)Table).BeginInit();
+            StatusStrip.SuspendLayout();
+            ToolStrip.SuspendLayout();
             SuspendLayout();
             // 
-            // ToolStrip
+            // RevenueColumn
             // 
-            ToolStrip.ImageScalingSize = new Size(24, 24);
-            ToolStrip.Items.AddRange(new ToolStripItem[] { AddButton, toolStripSeparator1, EditButton, toolStripSeparator2, DeleteButton });
-            ToolStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            ToolStrip.Location = new Point(0, 0);
-            ToolStrip.Name = "ToolStrip";
-            ToolStrip.Size = new Size(800, 33);
-            ToolStrip.TabIndex = 1;
-            ToolStrip.Text = "toolStrip";
+            RevenueColumn.DataPropertyName = "Revenue";
+            RevenueColumn.HeaderText = "Вырчука";
+            RevenueColumn.MinimumWidth = 8;
+            RevenueColumn.Name = "RevenueColumn";
+            RevenueColumn.ReadOnly = true;
             // 
-            // AddButton
+            // CrewFeeColumn
             // 
-            AddButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            AddButton.Image = (Image)resources.GetObject("AddButton.Image");
-            AddButton.ImageTransparentColor = Color.Magenta;
-            AddButton.Name = "AddButton";
-            AddButton.Size = new Size(34, 28);
-            AddButton.Text = "addButton";
-            AddButton.ToolTipText = "Добавить";
-            AddButton.Click += AddButton_Click;
+            CrewFeeColumn.DataPropertyName = "CrewFee";
+            CrewFeeColumn.HeaderText = "Сбор на экипаж";
+            CrewFeeColumn.MinimumWidth = 8;
+            CrewFeeColumn.Name = "CrewFeeColumn";
+            CrewFeeColumn.ReadOnly = true;
             // 
-            // toolStripSeparator1
+            // CrewNumberColumn
             // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 33);
+            CrewNumberColumn.DataPropertyName = "CrewNumber";
+            CrewNumberColumn.HeaderText = "Количество экипажа";
+            CrewNumberColumn.MinimumWidth = 8;
+            CrewNumberColumn.Name = "CrewNumberColumn";
+            CrewNumberColumn.ReadOnly = true;
             // 
-            // EditButton
+            // PassengerFeeColumn
             // 
-            EditButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            EditButton.Image = (Image)resources.GetObject("EditButton.Image");
-            EditButton.ImageTransparentColor = Color.Magenta;
-            EditButton.Name = "EditButton";
-            EditButton.Size = new Size(34, 28);
-            EditButton.Text = "editButton";
-            EditButton.ToolTipText = "Изменить";
-            EditButton.Click += EditButton_Click;
+            PassengerFeeColumn.DataPropertyName = "PassengerFee";
+            PassengerFeeColumn.HeaderText = "Сбор на пассажира";
+            PassengerFeeColumn.MinimumWidth = 8;
+            PassengerFeeColumn.Name = "PassengerFeeColumn";
+            PassengerFeeColumn.ReadOnly = true;
             // 
-            // toolStripSeparator2
+            // NumberOFPassengersColumn
             // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 33);
+            NumberOFPassengersColumn.DataPropertyName = "NumberOFPassengers";
+            NumberOFPassengersColumn.HeaderText = "Количество пассажиров";
+            NumberOFPassengersColumn.MinimumWidth = 8;
+            NumberOFPassengersColumn.Name = "NumberOFPassengersColumn";
+            NumberOFPassengersColumn.ReadOnly = true;
             // 
-            // DeleteButton
+            // ArrivalTimeColumn
             // 
-            DeleteButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            DeleteButton.Image = (Image)resources.GetObject("DeleteButton.Image");
-            DeleteButton.ImageTransparentColor = Color.Magenta;
-            DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(34, 28);
-            DeleteButton.Text = "deleteButton";
-            DeleteButton.ToolTipText = "Удалить";
-            DeleteButton.Click += DeleteButton_Click;
+            ArrivalTimeColumn.DataPropertyName = "ArrivalTime";
+            ArrivalTimeColumn.HeaderText = "Время прибытия";
+            ArrivalTimeColumn.MinimumWidth = 8;
+            ArrivalTimeColumn.Name = "ArrivalTimeColumn";
+            ArrivalTimeColumn.ReadOnly = true;
             // 
-            // StatusStrip
+            // TypeOFAircraftColumn
             // 
-            StatusStrip.ImageScalingSize = new Size(24, 24);
-            StatusStrip.Items.AddRange(new ToolStripItem[] { NumberOfFlights, NumberOfPassengers, CrewNumber, TotalRevenue });
-            StatusStrip.Location = new Point(0, 418);
-            StatusStrip.Name = "StatusStrip";
-            StatusStrip.Size = new Size(800, 32);
-            StatusStrip.TabIndex = 2;
-            StatusStrip.Text = "statusStrip1";
+            TypeOFAircraftColumn.DataPropertyName = "TypeOFAircraft";
+            TypeOFAircraftColumn.HeaderText = "Тип самолета";
+            TypeOFAircraftColumn.MinimumWidth = 8;
+            TypeOFAircraftColumn.Name = "TypeOFAircraftColumn";
+            TypeOFAircraftColumn.ReadOnly = true;
             // 
-            // NumberOfFlights
+            // FlightNumberColumn
             // 
-            NumberOfFlights.Name = "NumberOfFlights";
-            NumberOfFlights.Size = new Size(176, 25);
-            NumberOfFlights.Text = "Количество записей";
-            // 
-            // NumberOfPassengers
-            // 
-            NumberOfPassengers.Name = "NumberOfPassengers";
-            NumberOfPassengers.Size = new Size(211, 25);
-            NumberOfPassengers.Text = "Количество пассажиров";
-            // 
-            // CrewNumber
-            // 
-            CrewNumber.Name = "CrewNumber";
-            CrewNumber.Size = new Size(180, 25);
-            CrewNumber.Text = "Количество экипажа";
-            // 
-            // TotalRevenue
-            // 
-            TotalRevenue.Name = "TotalRevenue";
-            TotalRevenue.Size = new Size(145, 25);
-            TotalRevenue.Text = "Общая выручка";
+            FlightNumberColumn.DataPropertyName = "FlightNumber";
+            FlightNumberColumn.HeaderText = "Номер рейса";
+            FlightNumberColumn.MinimumWidth = 8;
+            FlightNumberColumn.Name = "FlightNumberColumn";
+            FlightNumberColumn.ReadOnly = true;
             // 
             // Table
             // 
@@ -161,65 +137,9 @@
             Table.RowHeadersWidth = 62;
             Table.ShowEditingIcon = false;
             Table.Size = new Size(800, 385);
-            Table.TabIndex = 3;
+            Table.TabIndex = 6;
             Table.CellClick += Table_CellClick;
             Table.CellFormatting += Table_CellFormatting;
-            // 
-            // FlightNumberColumn
-            // 
-            FlightNumberColumn.DataPropertyName = "FlightNumber";
-            FlightNumberColumn.HeaderText = "Номер рейса";
-            FlightNumberColumn.MinimumWidth = 8;
-            FlightNumberColumn.Name = "FlightNumberColumn";
-            FlightNumberColumn.ReadOnly = true;
-            // 
-            // TypeOFAircraftColumn
-            // 
-            TypeOFAircraftColumn.DataPropertyName = "TypeOFAircraft";
-            TypeOFAircraftColumn.HeaderText = "Тип самолета";
-            TypeOFAircraftColumn.MinimumWidth = 8;
-            TypeOFAircraftColumn.Name = "TypeOFAircraftColumn";
-            TypeOFAircraftColumn.ReadOnly = true;
-            // 
-            // ArrivalTimeColumn
-            // 
-            ArrivalTimeColumn.DataPropertyName = "ArrivalTime";
-            ArrivalTimeColumn.HeaderText = "Время прибытия";
-            ArrivalTimeColumn.MinimumWidth = 8;
-            ArrivalTimeColumn.Name = "ArrivalTimeColumn";
-            ArrivalTimeColumn.ReadOnly = true;
-            // 
-            // NumberOFPassengersColumn
-            // 
-            NumberOFPassengersColumn.DataPropertyName = "NumberOFPassengers";
-            NumberOFPassengersColumn.HeaderText = "Количество пассажиров";
-            NumberOFPassengersColumn.MinimumWidth = 8;
-            NumberOFPassengersColumn.Name = "NumberOFPassengersColumn";
-            NumberOFPassengersColumn.ReadOnly = true;
-            // 
-            // PassengerFeeColumn
-            // 
-            PassengerFeeColumn.DataPropertyName = "PassengerFee";
-            PassengerFeeColumn.HeaderText = "Сбор на пассажира";
-            PassengerFeeColumn.MinimumWidth = 8;
-            PassengerFeeColumn.Name = "PassengerFeeColumn";
-            PassengerFeeColumn.ReadOnly = true;
-            // 
-            // CrewNumberColumn
-            // 
-            CrewNumberColumn.DataPropertyName = "CrewNumber";
-            CrewNumberColumn.HeaderText = "Количество экипажа";
-            CrewNumberColumn.MinimumWidth = 8;
-            CrewNumberColumn.Name = "CrewNumberColumn";
-            CrewNumberColumn.ReadOnly = true;
-            // 
-            // CrewFeeColumn
-            // 
-            CrewFeeColumn.DataPropertyName = "CrewFee";
-            CrewFeeColumn.HeaderText = "Сбор на экипаж";
-            CrewFeeColumn.MinimumWidth = 8;
-            CrewFeeColumn.Name = "CrewFeeColumn";
-            CrewFeeColumn.ReadOnly = true;
             // 
             // ServicePercentageColumn
             // 
@@ -229,13 +149,93 @@
             ServicePercentageColumn.Name = "ServicePercentageColumn";
             ServicePercentageColumn.ReadOnly = true;
             // 
-            // RevenueColumn
+            // TotalRevenue
             // 
-            RevenueColumn.DataPropertyName = "Revenue";
-            RevenueColumn.HeaderText = "Вырчука";
-            RevenueColumn.MinimumWidth = 8;
-            RevenueColumn.Name = "RevenueColumn";
-            RevenueColumn.ReadOnly = true;
+            TotalRevenue.Name = "TotalRevenue";
+            TotalRevenue.Size = new Size(145, 25);
+            TotalRevenue.Text = "Общая выручка";
+            // 
+            // NumberOfPassengers
+            // 
+            NumberOfPassengers.Name = "NumberOfPassengers";
+            NumberOfPassengers.Size = new Size(211, 25);
+            NumberOfPassengers.Text = "Количество пассажиров";
+            // 
+            // NumberOfFlights
+            // 
+            NumberOfFlights.Name = "NumberOfFlights";
+            NumberOfFlights.Size = new Size(176, 25);
+            NumberOfFlights.Text = "Количество записей";
+            // 
+            // StatusStrip
+            // 
+            StatusStrip.ImageScalingSize = new Size(24, 24);
+            StatusStrip.Items.AddRange(new ToolStripItem[] { NumberOfFlights, NumberOfPassengers, CrewNumber, TotalRevenue });
+            StatusStrip.Location = new Point(0, 418);
+            StatusStrip.Name = "StatusStrip";
+            StatusStrip.Size = new Size(800, 32);
+            StatusStrip.TabIndex = 5;
+            StatusStrip.Text = "statusStrip1";
+            // 
+            // CrewNumber
+            // 
+            CrewNumber.Name = "CrewNumber";
+            CrewNumber.Size = new Size(180, 25);
+            CrewNumber.Text = "Количество экипажа";
+            // 
+            // DeleteButton
+            // 
+            DeleteButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            DeleteButton.Image = (Image)resources.GetObject("DeleteButton.Image");
+            DeleteButton.ImageTransparentColor = Color.Magenta;
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(34, 28);
+            DeleteButton.Text = "deleteButton";
+            DeleteButton.ToolTipText = "Удалить";
+            DeleteButton.Click += DeleteButton_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 33);
+            // 
+            // EditButton
+            // 
+            EditButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            EditButton.Image = (Image)resources.GetObject("EditButton.Image");
+            EditButton.ImageTransparentColor = Color.Magenta;
+            EditButton.Name = "EditButton";
+            EditButton.Size = new Size(34, 28);
+            EditButton.Text = "editButton";
+            EditButton.ToolTipText = "Изменить";
+            EditButton.Click += EditButton_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 33);
+            // 
+            // AddButton
+            // 
+            AddButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            AddButton.Image = (Image)resources.GetObject("AddButton.Image");
+            AddButton.ImageTransparentColor = Color.Magenta;
+            AddButton.Name = "AddButton";
+            AddButton.Size = new Size(34, 28);
+            AddButton.Text = "addButton";
+            AddButton.ToolTipText = "Добавить";
+            AddButton.Click += AddButton_Click;
+            // 
+            // ToolStrip
+            // 
+            ToolStrip.ImageScalingSize = new Size(24, 24);
+            ToolStrip.Items.AddRange(new ToolStripItem[] { AddButton, toolStripSeparator1, EditButton, toolStripSeparator2, DeleteButton });
+            ToolStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            ToolStrip.Location = new Point(0, 0);
+            ToolStrip.Name = "ToolStrip";
+            ToolStrip.Size = new Size(800, 33);
+            ToolStrip.TabIndex = 4;
+            ToolStrip.Text = "toolStrip";
             // 
             // MainForm
             // 
@@ -248,36 +248,38 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Аэропорт";
-            ToolStrip.ResumeLayout(false);
-            ToolStrip.PerformLayout();
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)Table).EndInit();
             StatusStrip.ResumeLayout(false);
             StatusStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)Table).EndInit();
+            ToolStrip.ResumeLayout(false);
+            ToolStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private ToolStrip ToolStrip;
-        private ToolStripButton AddButton;
-        private ToolStripButton EditButton;
-        private ToolStripButton DeleteButton;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripSeparator toolStripSeparator2;
-        private DataGridView Table;
-        private DataGridViewTextBoxColumn FlightNumberColumn;
-        private DataGridViewTextBoxColumn TypeOFAircraftColumn;
-        private DataGridViewTextBoxColumn ArrivalTimeColumn;
-        private DataGridViewTextBoxColumn NumberOFPassengersColumn;
-        private DataGridViewTextBoxColumn PassengerFeeColumn;
-        private DataGridViewTextBoxColumn CrewNumberColumn;
-        private DataGridViewTextBoxColumn CrewFeeColumn;
-        private DataGridViewTextBoxColumn ServicePercentageColumn;
+
         private DataGridViewTextBoxColumn RevenueColumn;
-        public ToolStripStatusLabel NumberOfFlights;
-        public ToolStripStatusLabel NumberOfPassengers;
-        public ToolStripStatusLabel CrewNumber;
+        private DataGridViewTextBoxColumn CrewFeeColumn;
+        private DataGridViewTextBoxColumn CrewNumberColumn;
+        private DataGridViewTextBoxColumn PassengerFeeColumn;
+        private DataGridViewTextBoxColumn NumberOFPassengersColumn;
+        private DataGridViewTextBoxColumn ArrivalTimeColumn;
+        private DataGridViewTextBoxColumn TypeOFAircraftColumn;
+        private DataGridViewTextBoxColumn FlightNumberColumn;
+        private DataGridView Table;
+        private DataGridViewTextBoxColumn ServicePercentageColumn;
         public ToolStripStatusLabel TotalRevenue;
+        public ToolStripStatusLabel NumberOfPassengers;
+        public ToolStripStatusLabel NumberOfFlights;
         private StatusStrip StatusStrip;
+        public ToolStripStatusLabel CrewNumber;
+        private ToolStripButton DeleteButton;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton EditButton;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton AddButton;
+        private ToolStrip ToolStrip;
     }
 }

@@ -1,7 +1,6 @@
-﻿using AirportApp.Infostructure;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace AirportApp.Models
+namespace AirportApp.Entities
 {
     /// <summary>
     /// Данные о рейсе
@@ -30,7 +29,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Номер рейса")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinNumberFlight, Constants.MaxNumberFlight, ErrorMessage = "{0} - должно быть больше {1}")]
+        [Range(Constants.Constants.MinNumberFlight, Constants.Constants.MaxNumberFlight, ErrorMessage = "{0} - должно быть больше {1}")]
         public int FlightNumber { get; set; }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Количество пассажиров")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinPassengerNumber, Constants.MaxPassengerNumber, ErrorMessage = "{0} - {1}")]
+        [Range(Constants.Constants.MinPassengerNumber, Constants.Constants.MaxPassengerNumber, ErrorMessage = "{0} - {1}")]
         public int NumberOfPassengers { get; set; }
 
         /// <summary>
@@ -57,7 +56,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Сбор на пассажира")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinPassangerFee, Constants.MaxPassangerFee, ErrorMessage = "{0} - должно быть больше {1}")]
+        [Range(Constants.Constants.MinPassengerFee, Constants.Constants.MaxPassengerFee, ErrorMessage = "{0} - должно быть больше {1}")]
         public decimal PassengerFee { get; set; }
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Количество экипажа")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinCrewNumber, Constants.MaxCrewNumber, ErrorMessage = "{0} - {1}")]
+        [Range(Constants.Constants.MinCrewNumber, Constants.Constants.MaxCrewNumber, ErrorMessage = "{0} - {1}")]
         public int CrewNumber { get; set; }
 
         /// <summary>
@@ -73,7 +72,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Сбор на экипаж")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinCrewFee, Constants.MaxCrewFee, ErrorMessage = "{0} - должно быть больше {1}")]
+        [Range(Constants.Constants.MinCrewFee, Constants.Constants.MaxCrewFee, ErrorMessage = "{0} - должно быть больше {1}")]
         public decimal CrewFee { get; set; }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace AirportApp.Models
         /// </summary>
         [Display(Name = "Процент обслуживания")]
         [Required(ErrorMessage = "{0} обязательно для заполнения")]
-        [Range(Constants.MinPercent, Constants.MaxPercent, ErrorMessage = "{0} - должно быть от {1} до {2}")]
+        [Range(Constants.Constants.MinPercent, Constants.Constants.MaxPercent, ErrorMessage = "{0} - должно быть от {1} до {2}")]
         public decimal ServicePercentage { get; set; }
 
         /// <summary>
