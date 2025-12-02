@@ -36,6 +36,7 @@ namespace AirportApp.Services.Tests
 
             // Assert
             storageMock.Verify(s => s.Add(flight, ct), Times.Once);
+            storageMock.VerifyNoOtherCalls();
         }
 
         /// <summary>
