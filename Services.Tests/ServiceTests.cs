@@ -2,6 +2,7 @@
 using AirportApp.Repositories.Contracts;
 using AirportApp.Services.Contracts;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -12,14 +13,15 @@ namespace AirportApp.Services.Tests
     /// </summary>
     public class FlightServiceTests
     {
-        private readonly Mock<IFlightStorage> storageMock;
         private readonly IFlightService service;
+        private readonly Mock<ILogger<FlightService>> loggerMock = default!;
+        private readonly Mock<IFlightStorage> storageMock;
         private readonly CancellationToken ct = CancellationToken.None;
 
         public FlightServiceTests()
         {
             storageMock = new Mock<IFlightStorage>();
-            service = new FlightService(storageMock.Object);
+            service = new FlightService(storageMock.Object, loggerMock.Object);
         }
 
         /// <summary>
