@@ -12,7 +12,7 @@ namespace AirportApp.Services
     public class FlightService : IFlightService
     {
         private readonly IFlightStorage storage;
-        private readonly ILogger logger; 
+        private readonly ILogger logger;
 
         /// <summary>
         /// Инициализировать новый экземпляр <see cref="FlightService"/>
