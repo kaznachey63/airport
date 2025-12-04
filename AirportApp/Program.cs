@@ -1,5 +1,7 @@
 using AirportApp.Forms;
 using AirportApp.Services;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace AirportApp
 {
@@ -11,11 +13,29 @@ namespace AirportApp
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
+            // Настройка Serilog
+            var serilogLogger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Seq(
+                    serverUrl: "http://localhost:5341",
+                    apiKey: "sBYcHWoX3lfUWvMS5ngK"
+                )
+                .CreateLogger();
 
-            Application.Run(new MainForm(new FlightService(new InMemoryFlightStorage())));
+            // Регистрация ILoggerFactory с Serilog
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddSerilog(serilogLogger);
+            });
+
+            // Создаём хранилище
+            var storage = new InMemoryFlightStorage();
+
+            // Создаём FlightService с правильными зависимостями
+            var flightService = new FlightService(storage, loggerFactory);
+
+            ApplicationConfiguration.Initialize();
+            Application.Run(new MainForm(flightService));
         }
     }
 }
