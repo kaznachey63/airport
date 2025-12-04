@@ -4,7 +4,6 @@ using AirportApp.Services.Contracts;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Serilog.Core;
 using Xunit;
 
 namespace AirportApp.Services.Tests
@@ -16,14 +15,14 @@ namespace AirportApp.Services.Tests
     {
         private readonly IFlightService service;
         private readonly Mock<IFlightStorage> storageMock;
-        private readonly Mock<ILogger> loggerMock;
         private readonly CancellationToken ct = CancellationToken.None;
 
         public FlightServiceTests()
         {
             storageMock = new Mock<IFlightStorage>();
-            loggerMock = new Mock<ILogger>();
 
+            // Создаём мок логгера только для фабрики — он не нужен за пределами этого метода
+            var loggerMock = new Mock<ILogger>();
             var loggerFactoryMock = new Mock<ILoggerFactory>();
             loggerFactoryMock
                 .Setup(f => f.CreateLogger(It.IsAny<string>()))

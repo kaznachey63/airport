@@ -79,7 +79,7 @@ namespace AirportApp.Services
             finally
             {
                 stopwatch.Stop();
-                logger.LogInformation("Метод {MethodName} завершён за {ElapsedMs} мс", nameof(GetAll), stopwatch.ElapsedMilliseconds);
+                logger.LogInformation("Метод {MethodName} завершён за {DurationSeconds:F3} с", nameof(GetAll), stopwatch.ElapsedMilliseconds);
             }
         }
 
@@ -94,7 +94,7 @@ namespace AirportApp.Services
             finally
             {
                 stopwatch.Stop();
-                logger.LogInformation("Метод {MethodName} завершён за {ElapsedMs} мс", nameof(GetStatistics), stopwatch.ElapsedMilliseconds);
+                logger.LogInformation("Метод {MethodName} завершён за {DurationSeconds:F3} с", nameof(GetStatistics), stopwatch.ElapsedMilliseconds);
             }
         }
     }
