@@ -53,6 +53,7 @@ namespace AirportApp.Services.Tests
 
             // Assert
             storageMock.Verify(s => s.Remove(flight, ct), Times.Once);
+            storageMock.VerifyNoOtherCalls();
         }
 
         /// <summary>
@@ -69,6 +70,7 @@ namespace AirportApp.Services.Tests
 
             // Assert
             storageMock.Verify(s => s.Update(flight, ct), Times.Once);
+            storageMock.VerifyNoOtherCalls();
         }
 
         /// <summary>
@@ -93,6 +95,7 @@ namespace AirportApp.Services.Tests
 
             // Assert
             result.Should().BeEquivalentTo(flights);
+            storageMock.VerifyNoOtherCalls();
         }
 
         /// <summary>
@@ -112,6 +115,7 @@ namespace AirportApp.Services.Tests
 
             // Assert
             result.Should().BeSameAs(expected);
+            storageMock.VerifyNoOtherCalls();
         }
 
         /// <summary>
@@ -130,6 +134,7 @@ namespace AirportApp.Services.Tests
 
             // Assert
             result.Should().BeEmpty();
+            storageMock.VerifyNoOtherCalls();
         }
     }
 }
