@@ -2,8 +2,9 @@
 using AirportApp.Entities;
 using AirportApp.Repositories.Contracts;
 using AirportApp.Constants;
+using DataBase.DataBaseStorage;
 
-namespace DataGridView.DataBaseStorage
+namespace Repositories.DataBaseStorage
 {
     /// <summary>
     /// Хранилище рейсов в БД

@@ -1,7 +1,7 @@
 ﻿using AirportApp.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataGridView.DataBaseStorage
+namespace DataBase.DataBaseStorage
 {
     /// <summary>
     /// Контекст БД
