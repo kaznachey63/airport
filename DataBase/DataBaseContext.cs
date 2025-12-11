@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Emit;
-using AirportApp.Constants;
-using AirportApp.Entities;
+﻿using AirportApp.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataGridView.DataBaseStorage
@@ -11,15 +8,22 @@ namespace DataGridView.DataBaseStorage
         /// <summary>
         /// Сущность <see cref="FlightModel"/>.
         /// </summary>
-        public DbSet<FlightModel> Flights { get; set; }
+        public DbSet<FlightModel> Flights { get; set; } = null!;
 
         /// <summary>
-        /// Создаёт экземпляр <see cref="DataBaseContext"/>.
+        /// Создание экземпляра <see cref="DataBaseContext"/>.
         /// </summary>
-        public DataBaseContext() => Database.EnsureCreated();
+        public DataBaseContext()
+        {
+            Database.EnsureCreated();
+        }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseSqlServer(
-            @"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;");
+            }
+        }
     }
 }
