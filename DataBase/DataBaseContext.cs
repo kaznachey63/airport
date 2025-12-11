@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataGridView.DataBaseStorage
 {
+    /// <summary>
+    /// Контекст БД
+    /// </summary>
     public class DataBaseContext : DbContext
     {
         /// <summary>
