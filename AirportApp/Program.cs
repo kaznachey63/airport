@@ -1,6 +1,8 @@
 using AirportApp.Forms;
 using AirportApp.Services;
+using DataBase.DataBaseStorage;
 using Microsoft.Extensions.Logging;
+using Repositories.DataBaseStorage;
 using Serilog;
 
 namespace AirportApp
@@ -28,8 +30,11 @@ namespace AirportApp
                 builder.AddSerilog(serilogLogger);
             });
 
+            // Создаём контекст БД
+            var contextDB = new DataBaseContext();
+
             // Создаём хранилище
-            var storage = new InMemoryFlightStorage();
+            var storage = new DataBaseStorage(contextDB);
 
             // Создаём FlightService с правильными зависимостями
             var flightService = new FlightService(storage, loggerFactory);
