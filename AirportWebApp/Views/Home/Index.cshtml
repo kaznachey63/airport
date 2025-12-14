@@ -10,7 +10,7 @@
 <h2>Общая статистика рейсов</h2>
 
 <div style="margin-bottom: 10px;">
-    <a asp-action="Create" class="btn btn-primary">Добавить рейс</a>
+    <a asp-action="Add" class="btn btn-primary">Добавить рейс</a>
     <a asp-action="Index" class="btn btn-light">Обновить</a>
 </div>
 
@@ -53,13 +53,13 @@
                     @totalCost.ToString("N2")
                 </td>
                 <td class="text-center">
-                    <a asp-action="Edit"
+                    <a asp-action="Update"
                        asp-route-id="@flight.Id"
                        class="btn btn-sm btn-secondary mb-1">
-                        Редактировать
+                        Изменить
                     </a>
 
-                    <a asp-action="Delete"
+                    <a asp-action="Remove"
                        asp-route-id="@flight.Id"
                        class="btn btn-sm btn-danger">
                         Удалить

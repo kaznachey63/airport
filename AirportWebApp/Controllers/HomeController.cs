@@ -1,4 +1,4 @@
-using AirportWebApp.Models;
+п»їusing AirportWebApp.Models;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -7,14 +7,14 @@ using System.Diagnostics;
 namespace AirportWebApp.Controllers
 {
     /// <summary>
-    /// Контроллер главной страницы и операций с рейсами
+    /// РљРѕРЅС‚СЂРѕР»Р»РµСЂ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ Рё РѕРїРµСЂР°С†РёР№ СЃ СЂРµР№СЃР°РјРё
     /// </summary>
     public class HomeController : Controller
     {
         private readonly IFlightService flightService = default!;
 
         /// <summary>
-        /// Конструктор с логгером
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ Р»РѕРіРіРµСЂРѕРј
         /// </summary>
         public HomeController(IFlightService FlightService)
         {
@@ -22,15 +22,29 @@ namespace AirportWebApp.Controllers
         }
 
         /// <summary>
-        /// Главная страница со списком рейсов
+        /// Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° СЃРѕ СЃРїРёСЃРєРѕРј СЂРµР№СЃРѕРІ
         /// </summary>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(new FlightIndexViewModel());
+            var flights = await flightService.GetAll();
+            var statistics = await flightService.GetStatistics();
+
+            if (statistics == null)
+                return StatusCode(500, "РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ СЂРµР№СЃРѕРІ.");
+
+            var statisticsVm = new FlightStatisticsViewModel(statistics);
+
+            var vm = new FlightIndexViewModel
+            {
+                Flights = flights,
+                Statistics = statisticsVm
+            };
+
+            return View(vm);
         }
 
         /// <summary>
-        /// Страница добавления рейса
+        /// РЎС‚СЂР°РЅРёС†Р° РґРѕР±Р°РІР»РµРЅРёСЏ СЂРµР№СЃР°
         /// </summary>
         [HttpGet]
         public IActionResult Add()
@@ -39,7 +53,7 @@ namespace AirportWebApp.Controllers
         }
 
         /// <summary>
-        /// Добавление рейса
+        /// Р”РѕР±Р°РІР»РµРЅРёРµ СЂРµР№СЃР°
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> Add(FlightEditViewModel model, CancellationToken cancellationToken)
@@ -47,12 +61,11 @@ namespace AirportWebApp.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            // Маппим ViewModel в модель домена
             var flight = new FlightModel
             {
                 Id = Guid.NewGuid(),
                 FlightNumber = model.FlightNumber,
-                TypeOfAircraft = model.TypeOfAircraft,
+                TypeOfAircraft = model.TypeOfAircraft!.Value,
                 ArrivalTime = model.ArrivalTime,
                 NumberOfPassengers = model.NumberOfPassengers,
                 PassengerFee = model.PassengerFee,
@@ -66,33 +79,11 @@ namespace AirportWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        /// <summary>
-        /// Страница редактирования рейса
-        /// </summary>
-        public IActionResult Update()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Страница удаления рейса
-        /// </summary>
-        public IActionResult Remove()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Страница конфиденциальности
-        /// </summary>
         public IActionResult Privacy()
         {
             return View();
         }
 
-        /// <summary>
-        /// Страница ошибки
-        /// </summary>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

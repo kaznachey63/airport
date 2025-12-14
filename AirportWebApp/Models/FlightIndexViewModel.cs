@@ -10,11 +10,11 @@ namespace AirportWebApp.Models
         /// <summary>
         /// Коллекция рейсов для отображения в таблице
         /// </summary>
-        public IEnumerable<FlightModel> Flights { get; set; } = Enumerable.Empty<FlightModel>();
+        public IEnumerable<FlightModel> Flights { get; set; } = new List<FlightModel>();
 
         /// <summary>
-        /// Агрегированная статистика по рейсам
+        /// Статистика по рейсам
         /// </summary>
-        public FlightStatisticsViewModel Statistics { get; set; } = new();
+        public FlightStatisticsViewModel Statistics { get; set; } = default!;
     }
 }

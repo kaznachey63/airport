@@ -27,7 +27,7 @@ namespace AirportWebApp.Models
         /// </summary>
         [Display(Name = "Тип самолёта")]
         [Required(ErrorMessage = "{0} обязательно для выбора")]
-        public TypeOfAircraft TypeOfAircraft { get; set; }
+        public TypeOfAircraft? TypeOfAircraft { get; set; }
 
         /// <summary>
         /// Время прибытия рейса
