@@ -136,6 +136,52 @@ namespace AirportWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Страница подтверждения удаления рейса
+        /// </summary>
+        /// <param name="id">ID рейса</param>
+        public async Task<IActionResult> Remove(Guid id)
+        {
+            var flight = await flightService.GetById(id);
+            if (flight == null)
+            {
+                return NotFound();
+            }
+
+            var model = new FlightEditViewModel
+            {
+                Id = flight.Id,
+                FlightNumber = flight.FlightNumber,
+                TypeOfAircraft = flight.TypeOfAircraft,
+                ArrivalTime = flight.ArrivalTime,
+                NumberOfPassengers = flight.NumberOfPassengers,
+                PassengerFee = flight.PassengerFee,
+                CrewNumber = flight.CrewNumber,
+                CrewFee = flight.CrewFee,
+                ServicePercentage = (int)flight.ServicePercentage
+            };
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// Подтверждение удаления рейса
+        /// </summary>
+        /// <param name="id">ID рейса</param>
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id, CancellationToken cancellationToken)
+        {
+            var flight = await flightService.GetById(id, cancellationToken);
+
+            if (flight == null)
+                return NotFound();
+
+            await flightService.Remove(flight, cancellationToken);
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Privacy()
         {
             return View();
