@@ -19,6 +19,9 @@ namespace Services.Contracts
         /// <inheritdoc cref="IFlightStorage.GetAll"/>
         Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default);
 
+        /// <inheritdoc cref="IFlightStorage.GetById"/>
+        Task<FlightModel?> GetById(Guid id, CancellationToken cancellationToken = default);
+
         /// <summary>
         /// Рассчитать статистику по рейсам
         /// </summary>

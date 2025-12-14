@@ -28,6 +28,11 @@ namespace Repositories.Contracts
         Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Получить рейс по ID
+        /// </summary>
+        Task<FlightModel?> GetById(Guid id, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Получить статистику
         /// </summary>
         Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default);

@@ -82,6 +82,13 @@ namespace Services
                 logger.LogInformation("Метод {MethodName} завершён за {DurationSeconds:F3} с", nameof(GetAll), stopwatch.ElapsedMilliseconds);
             }
         }
+        
+        /// <inheritdoc/>
+        public async Task<FlightModel?> GetById(Guid id, CancellationToken cancellationToken = default)
+        {
+            var flights = await storage.GetAll(cancellationToken);
+            return flights.FirstOrDefault(f => f.Id == id);
+        }
 
         /// <inheritdoc/>
         public async Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default)
