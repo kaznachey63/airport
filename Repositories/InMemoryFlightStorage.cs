@@ -42,6 +42,13 @@ namespace AirportApp.Services
         }
 
         /// <inheritdoc/>
+        public Task<FlightModel?> GetById(Guid id, CancellationToken cancellationToken = default)
+        {
+            var flight = flights.FirstOrDefault(f => f.Id == id);
+            return Task.FromResult(flight);
+        }
+
+        /// <inheritdoc/>
         public Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default)
         {
             var totalFlights = flights.Count;
