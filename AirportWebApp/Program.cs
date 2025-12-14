@@ -8,8 +8,7 @@ using Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // DbContext для базы данных
-builder.Services.AddDbContext<DataBaseContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Хранилище рейсов
 builder.Services.AddScoped<IFlightStorage, DataBaseStorage>();
@@ -29,7 +28,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseAuthorization();
 
