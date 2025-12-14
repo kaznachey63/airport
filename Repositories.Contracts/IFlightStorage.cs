@@ -1,6 +1,6 @@
-﻿using AirportApp.Entities;
+﻿using Entities;
 
-namespace AirportApp.Repositories.Contracts
+namespace Repositories.Contracts
 {
     /// <summary>
     /// Хранилище рейсов для операций CRUD

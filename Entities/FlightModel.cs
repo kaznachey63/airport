@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AirportApp.Entities
+namespace Entities
 {
     /// <summary>
     /// Данные о рейсе

@@ -1,5 +1,5 @@
-﻿using AirportApp.Entities;
-using AirportApp.Repositories.Contracts;
+﻿using Entities;
+using Repositories.Contracts;
 
 namespace AirportApp.Services
 {

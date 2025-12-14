@@ -1,6 +1,6 @@
-﻿using AirportApp.Entities;
+﻿using Entities;
 
-namespace AirportApp.Services.Contracts
+namespace Services.Contracts
 {
     /// <summary>
     /// Сервис управления рейсами с бизнес-логикой

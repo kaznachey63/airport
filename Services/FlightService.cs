@@ -1,10 +1,10 @@
-﻿using AirportApp.Entities;
-using AirportApp.Services.Contracts;
-using AirportApp.Repositories.Contracts;
+﻿using Entities;
+using Services.Contracts;
+using Repositories.Contracts;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace AirportApp.Services
+namespace Services
 {
     /// <summary>
     /// Сервис по работе с рейсами

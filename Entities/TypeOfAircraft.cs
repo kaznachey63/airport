@@ -1,4 +1,4 @@
-﻿namespace AirportApp.Entities
+﻿namespace Entities
 {
     /// <summary>
     /// Тип самолета

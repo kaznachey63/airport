@@ -1,5 +1,5 @@
-﻿using AirportApp.Entities;
-using AirportApp.Services.Contracts;
+﻿using Entities;
+using Services.Contracts;
 using System.ComponentModel;
 
 namespace AirportApp.Forms

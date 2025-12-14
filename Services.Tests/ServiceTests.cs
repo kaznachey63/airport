@@ -1,12 +1,12 @@
-﻿using AirportApp.Entities;
-using AirportApp.Repositories.Contracts;
-using AirportApp.Services.Contracts;
+﻿using Entities;
+using Repositories.Contracts;
+using Services.Contracts;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace AirportApp.Services.Tests
+namespace Services.Tests
 {
     /// <summary>
     /// Набор модульных тестов для проверки работы <see cref="FlightService"/>.

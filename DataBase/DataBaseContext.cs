@@ -1,7 +1,7 @@
-﻿using AirportApp.Entities;
+﻿using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataBase.DataBaseStorage
+namespace DataBase
 {
     /// <summary>
     /// Контекст БД

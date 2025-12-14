@@ -1,4 +1,4 @@
-﻿namespace AirportApp.Constants
+﻿namespace Constants
 {
     /// <summary>
     /// Константы, используемые для валидации и расчетов в приложении

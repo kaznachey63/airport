@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using AirportApp.Entities;
-using AirportApp.Repositories.Contracts;
-using AirportApp.Constants;
-using DataBase.DataBaseStorage;
+using Entities;
+using Repositories.Contracts;
+using DataBase;
 
-namespace Repositories.DataBaseStorage
+namespace Repositories
 {
     /// <summary>
     /// Хранилище рейсов в БД
@@ -51,7 +50,7 @@ namespace Repositories.DataBaseStorage
             foreach (var flight in flights)
             {
                 var baseRevenue = flight.NumberOfPassengers * flight.PassengerFee + flight.CrewNumber * flight.CrewFee;
-                var serviceFee = baseRevenue * (flight.ServicePercentage / Constants.MaxPercent);
+                var serviceFee = baseRevenue * (flight.ServicePercentage / Constants.Constants.MaxPercent);
                 totalRevenue += baseRevenue + serviceFee;
             }
 

@@ -1,6 +1,6 @@
 ﻿using AirportApp.Infrastructure;
 using System.ComponentModel.DataAnnotations;
-using AirportApp.Entities;
+using Entities;
 
 namespace AirportApp.Forms
 {
