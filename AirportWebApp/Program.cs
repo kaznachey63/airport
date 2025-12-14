@@ -1,31 +1,29 @@
-using Services.Contracts;
-using Repositories.Contracts;
+п»їusing DataBase;
 using Repositories;
+using Repositories.Contracts;
 using Services;
+using Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddScoped<IFlightStorage, DataBaseStorage>(); // хранилище рейсов
-builder.Services.AddScoped<IFlightService, FlightService>();   // сервис из NuGet пакета
+builder.Services.AddScoped<DataBaseContext>();
+builder.Services.AddScoped<IFlightStorage, DataBaseStorage>();
+builder.Services.AddScoped<IFlightService, FlightService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// вќЊ РќР• РІС‹Р·С‹РІР°Р№ EnsureCreated() Р·РґРµСЃСЊ вЂ” РѕРЅ СѓР¶Рµ РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРµ РєРѕРЅС‚РµРєСЃС‚Р°!
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
