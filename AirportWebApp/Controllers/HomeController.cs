@@ -58,7 +58,9 @@ namespace AirportWebApp.Controllers
         public async Task<IActionResult> Add(FlightEditViewModel model, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
+            {
                 return View(model);
+            }
 
             var flight = new FlightModel
             {
@@ -88,7 +90,9 @@ namespace AirportWebApp.Controllers
             var flight = flights.FirstOrDefault(f => f.Id == id);
 
             if (flight == null)
+            {
                 return NotFound();
+            }
 
             var model = new FlightEditViewModel
             {
@@ -119,7 +123,9 @@ namespace AirportWebApp.Controllers
             var flight = flights.FirstOrDefault(f => f.Id == model.Id);
 
             if (flight == null)
+            {
                 return NotFound();
+            }
 
             // Обновляем поля
             flight.FlightNumber = model.FlightNumber;
@@ -175,18 +181,27 @@ namespace AirportWebApp.Controllers
             var flight = await flightService.GetById(id, cancellationToken);
 
             if (flight == null)
+            {
                 return NotFound();
+            }
 
             await flightService.Remove(flight, cancellationToken);
 
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Страница конфиденциальности
+        /// </summary>
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
         }
 
+        /// <summary>
+        /// Страница ошибки
+        /// </summary>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
