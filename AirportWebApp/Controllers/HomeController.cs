@@ -13,9 +13,6 @@ namespace AirportWebApp.Controllers
     {
         private readonly IFlightService flightService = default!;
 
-        /// <summary>
-        /// Конструктор с логгером
-        /// </summary>
         public HomeController(IFlightService FlightService)
         {
             flightService = FlightService;
@@ -30,7 +27,9 @@ namespace AirportWebApp.Controllers
             var statistics = await flightService.GetStatistics();
 
             if (statistics == null)
+            {
                 return StatusCode(500, "Не удалось загрузить статистику рейсов.");
+            }
 
             var statisticsVm = new FlightStatisticsViewModel(statistics);
 
@@ -75,6 +74,64 @@ namespace AirportWebApp.Controllers
             };
 
             await flightService.Add(flight, cancellationToken);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        /// <summary>
+        /// Редактирование рейса
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Update(Guid id)
+        {
+            var flights = await flightService.GetAll();
+            var flight = flights.FirstOrDefault(f => f.Id == id);
+
+            if (flight == null)
+                return NotFound();
+
+            var model = new FlightEditViewModel
+            {
+                Id = flight.Id,
+                FlightNumber = flight.FlightNumber,
+                TypeOfAircraft = flight.TypeOfAircraft,
+                ArrivalTime = flight.ArrivalTime,
+                NumberOfPassengers = flight.NumberOfPassengers,
+                PassengerFee = flight.PassengerFee,
+                CrewNumber = flight.CrewNumber,
+                CrewFee = flight.CrewFee,
+                ServicePercentage = (int)flight.ServicePercentage
+            };
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// Обновление рейса
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> Update(FlightEditViewModel model, CancellationToken cancellationToken)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var flights = await flightService.GetAll();
+            var flight = flights.FirstOrDefault(f => f.Id == model.Id);
+
+            if (flight == null)
+                return NotFound();
+
+            // Обновляем поля
+            flight.FlightNumber = model.FlightNumber;
+            flight.TypeOfAircraft = model.TypeOfAircraft!.Value;
+            flight.ArrivalTime = model.ArrivalTime;
+            flight.NumberOfPassengers = model.NumberOfPassengers;
+            flight.PassengerFee = model.PassengerFee;
+            flight.CrewNumber = model.CrewNumber;
+            flight.CrewFee = model.CrewFee;
+            flight.ServicePercentage = model.ServicePercentage;
+
+            await flightService.Update(flight, cancellationToken);
 
             return RedirectToAction(nameof(Index));
         }
