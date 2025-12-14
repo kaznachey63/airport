@@ -30,7 +30,11 @@ namespace AirportWebApp.Controllers
 
         public IActionResult Remove()
         {
-        ено:
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
             return View();
         }
 
