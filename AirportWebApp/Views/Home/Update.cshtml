@@ -1,0 +1,67 @@
+﻿@using Entities
+@model AirportWebApp.Models.FlightEditViewModel
+
+@{
+    ViewData["Title"] = "Аэропорт. Редактирование рейса";
+}
+
+<h2 class="mb-3">Редактирование рейса</h2>
+
+<form method="post" asp-action="Update">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <div class="mb-2">
+        <label asp-for="FlightNumber" class="form-label"></label>
+        <input asp-for="FlightNumber" class="form-control" type="number" />
+        <span asp-validation-for="FlightNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="TypeOfAircraft" class="form-label"></label>
+        <select asp-for="TypeOfAircraft" class="form-select" asp-items="Html.GetEnumSelectList<TypeOfAircraft>()">
+            <option value="">-- выберите --</option>
+        </select>
+        <span asp-validation-for="TypeOfAircraft" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="ArrivalTime" class="form-label"></label>
+        <input asp-for="ArrivalTime" type="datetime-local" class="form-control" />
+        <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="NumberOfPassengers" class="form-label"></label>
+        <input asp-for="NumberOfPassengers" class="form-control" type="number" />
+        <span asp-validation-for="NumberOfPassengers" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="PassengerFee" class="form-label"></label>
+        <input asp-for="PassengerFee" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="PassengerFee" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="CrewNumber" class="form-label"></label>
+        <input asp-for="CrewNumber" class="form-control" type="number" />
+        <span asp-validation-for="CrewNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="CrewFee" class="form-label"></label>
+        <input asp-for="CrewFee" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="CrewFee" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ServicePercentage" class="form-label"></label>
+        <input asp-for="ServicePercentage" class="form-control" type="number" />
+        <span asp-validation-for="ServicePercentage" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

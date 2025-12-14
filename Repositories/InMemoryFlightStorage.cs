@@ -1,7 +1,7 @@
 ﻿using Entities;
 using Repositories.Contracts;
 
-namespace AirportApp.Services
+namespace Repositories
 {
     /// <summary>
     /// Хранилище рейсов в оперативной памяти
@@ -39,6 +39,13 @@ namespace AirportApp.Services
         public Task<ICollection<FlightModel>> GetAll(CancellationToken cancellationToken = default)
         {
             return Task.FromResult<ICollection<FlightModel>>(flights);
+        }
+
+        /// <inheritdoc/>
+        public Task<FlightModel?> GetById(Guid id, CancellationToken cancellationToken = default)
+        {
+            var flight = flights.FirstOrDefault(f => f.Id == id);
+            return Task.FromResult(flight);
         }
 
         /// <inheritdoc/>

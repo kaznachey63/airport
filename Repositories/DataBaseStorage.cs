@@ -38,6 +38,13 @@ namespace Repositories
         }
 
         /// <inheritdoc/>
+        public async Task<FlightModel?> GetById(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await ctx.Set<FlightModel>()
+                .FirstOrDefaultAsync(f => f.Id == id, cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public async Task<FlightStatistics> GetStatistics(CancellationToken cancellationToken = default)
         {
             var flights = await ctx.Set<FlightModel>().ToListAsync(cancellationToken);

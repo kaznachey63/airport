@@ -1,0 +1,80 @@
+﻿@using Entities
+@using AirportWebApp.Models
+
+@model FlightIndexViewModel
+
+@{
+    ViewData["Title"] = "Аэропорт. Список рейсов";
+}
+
+<h2>Общая статистика рейсов</h2>
+
+<div style="margin-bottom: 10px;">
+    <a asp-action="Add" class="btn btn-primary">Добавить рейс</a>
+    <a asp-action="Index" class="btn btn-light">Обновить</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Номер рейса</th>
+            <th>Тип самолёта</th>
+            <th>Время прибытия</th>
+            <th>Пассажиры</th>
+            <th>Сбор на пассажира</th>
+            <th>Экипаж</th>
+            <th>Сбор на экипаж</th>
+            <th>% обслуживания</th>
+            <th>Общая стоимость</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flight in Model.Flights)
+        {
+            <tr>
+                <td>@flight.FlightNumber</td>
+                <td>@flight.TypeOfAircraft</td>
+                <td>@flight.ArrivalTime.ToShortDateString()</td>
+                <td>@flight.NumberOfPassengers</td>
+                <td>@flight.PassengerFee.ToString("N2")</td>
+                <td>@flight.CrewNumber</td>
+                <td>@flight.CrewFee.ToString("N2")</td>
+                <td>@flight.ServicePercentage</td>
+                <td>
+                    @{
+                        var baseCost =
+                        flight.NumberOfPassengers * flight.PassengerFee +
+                        flight.CrewNumber * flight.CrewFee;
+
+                        var totalCost =
+                        baseCost + baseCost * flight.ServicePercentage / 100;
+                    }
+                    @totalCost.ToString("N2")
+                </td>
+                <td class="text-center">
+                    <a asp-action="Update"
+                       asp-route-id="@flight.Id"
+                       class="btn btn-sm btn-secondary mb-1">
+                        Изменить
+                    </a>
+
+                    <a asp-action="Remove"
+                       asp-route-id="@flight.Id"
+                       class="btn btn-sm btn-danger">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<div>
+    <strong>Общее кол-во рейсов:</strong> @Model.Statistics.TotalFlights |
+    <strong>Общая сумма сборов:</strong> @Model.Statistics.TotalRevenue.ToString("N2") |
+    <strong>Всего пассажиров:</strong> @Model.Statistics.TotalPassengers |
+    <strong>Всего экипажа:</strong> @Model.Statistics.TotalCrew
+</div>
