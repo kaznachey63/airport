@@ -4,7 +4,7 @@ using AirportApp.Repositories.Contracts;
 using AirportApp.Constants;
 using DataBase.DataBaseStorage;
 
-namespace Repositories.DataBaseStorage
+namespace Repositories
 {
     /// <summary>
     /// Хранилище рейсов в БД

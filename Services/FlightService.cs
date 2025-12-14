@@ -4,7 +4,7 @@ using AirportApp.Repositories.Contracts;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace AirportApp.Services
+namespace Services
 {
     /// <summary>
     /// Сервис по работе с рейсами

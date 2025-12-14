@@ -1,6 +1,7 @@
 using AirportWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using AirportApp.Services.Contracts;
 
 namespace AirportWebApp.Controllers
 {
@@ -9,14 +10,14 @@ namespace AirportWebApp.Controllers
     /// </summary>
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IFlightService flightService = default!;
 
         /// <summary>
         /// Конструктор с логгером
         /// </summary>
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IFlightService FlightService)
         {
-            _logger = logger;
+            FlightService = flightService;
         }
 
         /// <summary>

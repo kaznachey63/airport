@@ -1,7 +1,8 @@
 ﻿using AirportApp.Entities;
 using AirportApp.Repositories.Contracts;
+using AirportApp.Constants;
 
-namespace AirportApp.Services
+namespace Repositories
 {
     /// <summary>
     /// Хранилище рейсов в оперативной памяти
@@ -53,7 +54,7 @@ namespace AirportApp.Services
             {
                 var baseRevenue = flight.NumberOfPassengers * flight.PassengerFee
                                 + flight.CrewNumber * flight.CrewFee;
-                var serviceFee = baseRevenue * (flight.ServicePercentage / Constants.Constants.MaxPercent);
+                var serviceFee = baseRevenue * (flight.ServicePercentage / Constants.MaxPercent);
                 totalRevenue += baseRevenue + serviceFee;
             }
 
