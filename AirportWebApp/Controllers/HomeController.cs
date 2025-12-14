@@ -15,11 +15,22 @@ namespace AirportWebApp.Controllers
 
         public IActionResult Index()
         {
+            return View(new FlightIndexViewModel());
+        }
+
+        public IActionResult Add()
+        {
+            return View("Add", new FlightEditViewModel());
+        }
+
+        public IActionResult Update()
+        {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Remove()
         {
+        ено:
             return View();
         }
 

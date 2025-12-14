@@ -1,8 +1,57 @@
-﻿@{
-    ViewData["Title"] = "Аэропорт. Список рейсов";
+﻿@using AirportApp.Entities
+@model AirportWebApp.Models.FlightEditViewModel
+
+@{
+    ViewData["Title"] = "Аэропорт. Добавить рейс";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2 class="mb-3">Добавление рейса</h2>
+
+<form method="post">
+
+    <div class="mb-2">
+        <label asp-for="FlightNumber" class="form-label"></label>
+        <input asp-for="FlightNumber" class="form-control" type="number" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="TypeOfAircraft" class="form-label"></label>
+        <select asp-for="TypeOfAircraft" class="form-select" asp-items="Html.GetEnumSelectList<TypeOfAircraft>()">
+            <option value="">-- выберите --</option>
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="ArrivalTime" class="form-label"></label>
+        <input asp-for="ArrivalTime" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="NumberOfPassengers" class="form-label"></label>
+        <input asp-for="NumberOfPassengers" class="form-control" type="number" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="PassengerFee" class="form-label"></label>
+        <input asp-for="PassengerFee" class="form-control" type="number" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="CrewNumber" class="form-label"></label>
+        <input asp-for="CrewNumber" class="form-control" type="number" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="CrewFee" class="form-label"></label>
+        <input asp-for="CrewFee" class="form-control" type="number" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ServicePercentage" class="form-label"></label>
+        <input asp-for="ServicePercentage" class="form-control" type="number" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+
+</form>
