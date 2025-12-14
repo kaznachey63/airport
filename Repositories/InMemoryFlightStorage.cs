@@ -1,7 +1,7 @@
 ﻿using Entities;
 using Repositories.Contracts;
 
-namespace AirportApp.Services
+namespace Repositories
 {
     /// <summary>
     /// Хранилище рейсов в оперативной памяти
