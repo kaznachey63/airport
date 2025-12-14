@@ -1,7 +1,15 @@
+using Services.Contracts;
+using Repositories.Contracts;
+using Repositories;
+using Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IFlightStorage, DataBaseStorage>(); // хранилище рейсов
+builder.Services.AddScoped<IFlightService, FlightService>();   // сервис из NuGet пакета
 
 var app = builder.Build();
 
