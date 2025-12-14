@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Kaznachey.Airport.Services3" Version="1.0.6" />
+    <PackageReference Include="Kaznachey.Airport.Services3" Version="1.0.7" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />

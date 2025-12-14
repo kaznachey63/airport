@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Kaznachey.Airport.Services3" Version="1.0.6" />
+    <PackageReference Include="Kaznachey.Airport.Services3" Version="1.0.7" />
   </ItemGroup>
 
   <ItemGroup>
